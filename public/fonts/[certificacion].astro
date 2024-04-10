@@ -1,0 +1,19 @@
+---
+import type { GetStaticPaths } from "astro";
+
+
+const {certificacion} = Astro.params
+
+
+export const getStaticPaths = (() => {
+    return [
+        {params : { certificacion : 'aws-solutions-architect'}},
+        {params : { certificacion : 'aws-developer-associate'}},
+        {params : { certificacion : 'linux-professional-institute'}}
+    ];
+}) satisfies GetStaticPaths;
+
+---
+
+
+<h1>estamos en la ruta: {certificacion}</h1>

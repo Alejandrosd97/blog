@@ -7,6 +7,9 @@ heroImage: '/blog-placeholder-1.jpg'
 
 
 
+##### COMPUTE OPTIMIZER
+Es una herramienta de Machine Learning que ayuda a optimizar los recursos de computación. Analiza los recursos y ofrece recomendaciones al respecto. Incrementa el coste-beneficio al reconfigurar recursos demasiado potentes para el uso dado y mejora el rendimiento al ajustar el tamaño de los recursos demasiado poco potentes. Se puede activar en una sola cuenta o en una organización entera. Compute Optimizer necesita acceso a las instancias de computación así como a los logs de Cloudwatch que éstas producen, y mediante su análisis durante un tiempo produce un set de ajustes recomendados para que el usuario pueda actuar en consecuencia. A pesar de que EC2 es el recurso más común sobre el que se usa Compute Optimizer, también se puede utilizar con Lambda, EBS y Fargate.
+
 
 ##### ELASTIC NETWORK INTERFACE (ENI)
 Es un servicio que virtualiza y extrae todo lo que tiene que ver con el networking de una instancia EC2. Es muy flexible, puesto que es posible asociarla a una instancia o incluso moverla a otra. Puede tener IP pública, o incluso elastic IP. Cuando un EC2 es desplegado, viene por defecto con un ENI asociado (primario) con un "network interface name" de eth0. El ENI primario no se puede desasociar de la instancia ni siquiera cuando ésta está detenida, solo cuando se termina. Si se crean mas se pueden asociar con una instancia. En este caso serían ENI secundarias, y sí se pueden desasociar de una instancia y asociar con otra llibremente. También se le pueden asociar Security Groups. En caso de tener un servidor en mantenimiento sería una buena opción mover el ENI a otra instancia-

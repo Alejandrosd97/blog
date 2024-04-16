@@ -35,6 +35,11 @@ Compute Optimizer analiza servicios como lambda, EBS o EC2 y utiliza inteligenci
 ##### AWS ORGANIZATIONS
 Sirve para manejar todas las cuentas AWS de una misma empresa de manera centralizada. Una práctica común consiste en colocar todas las cuentas de un mismo tipo, por ejemplo desarrolladores, en una misma unidad organizacinal (OU en inglés) y aplicarle una política a todas juntas. Hay una cuenta llamada management account, que es la que administra todas las demás. Las limitaciones sobre qué pueden hacer determinadas OU vienen determinadas por las políticas de control de servicios. Un ejemplo de estas políticas sería impedir a cuentas dentro del OU de desarrollo usar instancias EC2 grandes, ya que estas solo deben usarse en producción debido a su alto coste.
 
+El motivo principal de usar míltiples cuentas es aplicar el principio de mínimo privilegio para cada entorno, restringir el acceso a información sensible (agrupar la información sensible en una cuenta separada sin acceso humano a ella), agrupar la carga de trabajo en base a los propósitos del negocio y limitar el alcance de brechas de seguridad que tengan que ver con acceso no autorizado.
+
+
+
+
 ##### CONTROL TOWER
 Se podría vera Control Tower como un orquestador de cuentas. En caso de tener un nuevo miembro en el equipo, se le podría crear una cuenta ya preconfigurada con todos los permisos solo con un click. Esta construido sobre la base de Organizations. Cuando se crea una cuenta los "guardrails" se crean y configuran de manera automatica:
 - Preventive guardrails: Medidas proactivas para prevenir problemas, generalmente implementados mediante políticas IAM y y políticas de control de servicios.

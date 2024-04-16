@@ -7,7 +7,7 @@ heroImage: '/blog-placeholder-1.jpg'
 
 
 ##### KINESIS
-Se puede considerar como una autopista conectada a una cuenta de AWS por la que se transmiten los datos. Existen dos opciones, Data streams, que maneja los datos en tiempo real, y Firehose, que si bien, tiene una latencia muy baja, no es en tiempo real. Kinesis por defecto, no procesa la información, pero si es posible usando Kinesis Data Analytics
+Se puede considerar como una autopista conectada a una cuenta de AWS por la que se transmiten los datos. Existen dos opciones, Data streams, que maneja los datos en tiempo real, y Firehose, que si bien, tiene una latencia muy baja, no es en tiempo real. Kinesis por defecto, no procesa la información, pero si es posible usando Kinesis Data Analytics.
 
 Aunque los dos son brokers de mensajería, es preferible priorizar Kinesis sobre SQS si se necesita comunicación inmediata. Esto se debe a que SQS no envía data en tiempo real. Kinesis tiene la contrapartida de que es mas complicado de configurar y se usa en aplicaciones de big data, pero permite comunicación instantanea. Firehose escala automaticamente, mientras que con Streams es necesario determinar el numero de shards, por lo que no escala tan bien.
 

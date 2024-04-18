@@ -37,7 +37,7 @@ Coreografía hace referencia la coordinación asíncrona de múltiples productor
 Para realizar un cambio en una applicación íntimamente acoplada se necesita mucha coordinación entre los diferentes equipos, esto se debe a que cada parte necesita saber como operan las otras para poder comunicarse con ellas. En un sistema distribuido, cada parte es distinta y puede escalar independientemente, de manera que cada equipo solo tiene que preocuparse de operar su parte o servicio. Este tipo de arquitecturas funcionan mediante eventos, que es donde reside la complicación para este tipo de arquitectura. Eventbridge se encarga de manejar los eventos y se puede integrar con APIs para enviar eventos a enpoints que pueden estar fuera de AWS. Tiene tres componentes:
 - Event Bus: Es un bus de eventos serverless que permite construir aplicaciones basadas en eventos que escalan de manera rápida y sencilla. Es la localización donde se envían los eventos y éste los transmite a su destinación. Cada cuenta proporciona uno por defecto aunque se pueden configurar más.
 - Amazon Eventbridge Pipes: Sirve para transmitir eventos de una sola fuente a un solo destinatario.
-- Amazon eventbridge scheduler
+- Amazon Eventbridge scheduler.
 
 ##### STEP FUNCTIONS
 Se asegura de que las tareas se completan en el orden correcto. Premite definir y orquestar workflows, lo que permite coordinar las tareas en un determinado orden. Tambien es posible que varias tareas se ejecuten de manera paralela, además facilita el manejo de errores y visualizar el flujo de trabajo en una interfaz gráfica.

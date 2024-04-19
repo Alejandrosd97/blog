@@ -24,3 +24,40 @@ de accesos a memoria realizados para leer la instrucción.
 3) Ejecutar la instrucción y escribir el operando de destino: Recopila el resultado obtenido durante la ejecución y escribirlo en el lugar indicado por el operando, a menos que el operando esté implícito, en cuyo caso se escribe en el lugar predeterminado por la instrucción.
 4) Verificar si hay interrupciones: Las interrupciones son el mecanismo por el cual un dispositivo externo al procesador puede interrumpir el programa que se está ejecutando en el procesador para ejecutar otro programa. si no hay, la ejecución de la instrucción finaliza y la ejecución de la siguiente instrucción comienza. De lo contrario, el control del procesador se transfiere a la rutina de servicio de interrupción.
 
+
+##### CANALIZACIÓN DE INSTRUCCIONES
+Consiste en dividir el ciclo de ejecución de una instrucción en un conjunto de etapas. Estas etapas pueden coincidir o no con los pasos del ciclo de ejecución de instrucciones. El objetivo es ejecutar de manera simultánea diferentes etapas de diferentes instrucciones, lo que incrementa el rendimiento del procesador. El tiempo para llevar a cabo una instrucción no se reduce pero sí aumenta la cantidad de instrucciones llevadas a cabo en ese tiempo. Para llevar esto a cabo es necesario que cada etapa de todas las instrucciones tenga la misma duración, normalmente un ciclo de reloj. La información generada en cada paso se almacena en los registros de manera que esté disponible para el siguiente paso
+
+##### REGISTROS
+Los regsitros son elementos de memoria de acceso rápidos localizados dentro del procesador, que éste utiliza como espacio de almacenamiento temporal. 
+Son esenciales para el funcionamiento del procesador ya que la ALU solo trabaja con la memoria interna del procesador. La cantidad y rganización de los registros cambia de un procesador a otro. Se pueden clasificar de la siguiente manera:
+
+- Propósito general: Se suelen utilizar como operandos en las instrucciones de montaje (assembly). A estos registros se les pueden asignar funciones específicas: datos o dirección. Se pueden diferenciar por el formato y tamaño de los datos que contienen,por ejemplo, puede haber registros para números enteros y registros para números decimales.
+Los registros de direcciones se utilizan para acceder a la memoria y pueden almacenar direcciones o índices.
+
+- Registros de instrucción: Hay dos principales involucrados en el acceso a las instrucciones: el contador del programa (PC), que contiene la dirección de la siguiente instrucción que debe ser leída de la memoria y el registro de instrucción (IR), que contiene la instrucción a ser leída.
+
+- Registros de acceso a la memoria: Hay dos registros necesarios para las operaciones de lectura y escritura: Registro de la dirección de memoria (MAR), donde se coloca la dirección de memoria que aAlgunos de estos registros se utilizan implícitamente para diferentes funciones, como acceder a la pila, dirigir segmentos de memoria o Algunos de estos registros se utilizan implícitamente para diferentes funciones, como acceder a la pila, dirigir segmentos de memoria o soportar memoria virtual.soportar memoria virtual. la que se desea acceder y el registro de búfer de memoria (MBR), que es donde la memoria coloca la información leída la que se quiere escribir. FALTA
+
+-Registros de control y status: Almacenan información sobre el estado del procesador.
+Los bits del registro de estado son modificados por el procesador como resultado de la ejecución de algunos tipos de instrucciones y como consecuencia de algún evento, como por ejemplo solicitudes de interrupción. Estos bits son parcialmente visibles para el programador, en algunos casos al ejecutar instrucciones específicas.
+
+##### ALU
+Es un circuito combinacional capaz de realizar operaciones aritméticas y lógicas con números enteros y reales. Las operaciones que se pueden realizar están definidas por el set de instrucciones.
+Los números íntegros se pueden representar usando diferentes magnitude, siendo la común hoy en día el complemento de dos. El número de bits más común es 32 o 64. Los números reales, por su parte se pueden representar de dos maneras diferentes, punto fijo y punto flotante. En la notación de punto fijo, la posición de la coma está fijada y una cantidad específica de bits se usa para la parte entera y otro para la decimal. En la notación de punto flotante, se usan tres campos, uno para el signo, una para el significando y otra para el exponente.
+
+Las operaciones aritméticas habituales que puede realizar una ALU incluyen suma,
+resta, multiplicación y división. Además, se pueden incluir operaciones específicas de incrementos positivos (+1) o negativos (-1).
+Las operaciones lógicas incluyen operaciones AND, OR, NOT, XOR, operaciones de desplazamiento de bits y operaciones de desplazamiento circular.
+
+##### UNIDAD DE CONTROL
+Puede considerarse como el cerebro del ordenador, ya que está conectado al resto de componentes mediante señales de control. Al implementar una unidad de control, queda claro que las unidades del ordenador deben diseñadas, no para mejorar el funcionamiento específico de cada unidad, sino para mejorar el funcionamiento general del ordenador. La función básica de la unidad de control es la ejecución de las instrucciones, pero su complejidad de diseño no se debe a la complejidad de estas tareas, sino a su sincronización.
+
+###### MICROOPERACIONES
+Cada una de las operaciones realizadas durante la ejecución de una instrucción se llama microoperación, y son la base para diseñar la unidad de control. El propósito básico de las microoperaciones es transferir información de una ubicación del ordenador a otra, generalmente de un registro a otro, ya sean internos o externos al procesador. Este proceso de transferencia puede implicar no solo mover la información sino también transformarla. Se identifican tres tipos básicos de microoperaciones: 
+- Transferencia interna: Operaciones de transferencia entre registros internos. Un ejemplo sería cargar el contenido del registro PC en el registro MAR para obtener la siguiente instruccióna a ejecutar.
+- Transferencia interna con transformación: Realiza operaciones lógicas o aritméticas usando los registros internos. 
+-Transferencia externa: Operaciones de transferencia entre registros internos y externos del procesador, o entre registros internos y módulos externos del procesador, como el bus o la RAM. Un ejemplo sería cargar el contenido de registro de status de un dispositivo de I/O a un registro del procesador.
+
+
+

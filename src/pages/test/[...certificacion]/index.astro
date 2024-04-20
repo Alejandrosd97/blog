@@ -13,7 +13,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
-const posts = (await getCollection('compute')).sort(
+const tema = 'linux'
+
+const posts = (await getCollection(tema)).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 
@@ -115,9 +117,6 @@ export const getStaticPaths = (() => {
 								<a href={`/test/${certificacion}/${post.slug}/`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
 								</a>
 							</li>
 						))

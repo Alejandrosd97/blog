@@ -45,8 +45,12 @@ ELB Access Logs proporciona registros de acceso que guardan información detalla
 
 ALB Request Tracker realiza un seguimiento de las solicitudes HTTP. El load balancer agrega un encabezado con un identificador de seguimiento a cada solicitud que recibe. No sirve para analizar datos específicos de latencia.
 
-##### AWS CLI
+##### ELASTIC FILESYSTEM
+Los volúmenes EFS proporcionan un almacenamiento de archivos simple, escalable y persistente para usar con las tareas de Amazon ECS. Con EFS, la capacidad de almacenamiento es elástica y aumenta y disminuye automáticamente a medida que se agrega y eliminan archivos. Las aplicaciones pueden tener el almacenamiento que necesitan y cuando lo necesitan. Los volúmenes de EFS son compatibles con tareas alojadas en Fargate o EC2.
 
+Se pueden utilizar los sistemas de archivos de EFS con ECS para exportar datos del sistema de archivos en la flota de instancias de contenedores. De esa manera, las tareas tienen acceso al mismo almacenamiento persistente, sin importar la instancia a la que lleguen. Sin embargo, se debe configurar la AMI de la instancia de contenedor para montar el EFS antes de que se inicie el demonio Docker.
+
+##### AWS CLI
 Si usamos amazon linux como sistema operativo en una instancia, ésta viene con el aws cli preinstalado. Para ejecutar comandos de AWS CLI tenemos que introducir nuestras credenciales (access key ID y secret access key) mediante el comando aws configure, que nos son dadas al crear un usuario en IAM. Para ver nuestras credenciales una vez introducidas, ejecutamos aws configure list. La Secret Access Key solo es visible cuando se crea el usuario, si se pierde se debe crear otra nueva.
 
 AWS CLI nos permite interactuar con los recursos de AWS desde la terminal, por ejemplo podemos interacturas con S3 con los siguientes comandos:

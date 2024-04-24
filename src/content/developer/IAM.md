@@ -15,7 +15,11 @@ Los roles no solo pueden ser ocupados por personas, también por servicios o rec
 
 IAM es universal, no diferencia entre regiones, Root account es el usuario con el que se crea la cuenta. Los usuarios no tienen permisos por defecto, deben ser añadidos, lo que si se crea son las Access Key ID y Secret Access Key. Estas no son usuario y contraseña, y por lo tanto no sirven para hacer login pero sí para acceder via APis o linea de comandos.
 
+En lugar de crear políticas individuales para cada usuario, una buena opción es utilizar variables de política y crear una política de grupo que se aplique a varios usuarios. Las variables de política actúan como placeholders. Cuando realiza una solicitud a AWS, el placeholder se reemplaza por un valor de la solicitud cuando se evalúa la política.
 
+IAM Access Analyzer ayuda a identificar los recursos se una organización y sus cuentas, como los buckets de S3 o los roles de IAM, que se comparten con una entidad externa. Esto permite identificar el acceso no deseado a los recursos y datos, lo que supone un riesgo para la seguridad.
+
+Se puede establecer el alcance del analizador en una organización o una cuenta de AWS. Esta seria una zona de confianza. El analizador escanea todos los recursos admitidos dentro de la zona. Cuando Access Analyzer encuentra una política que permite el acceso a un recurso desde fuera de la zona de confianza, genera un hallazgo activo.
 
 ##### WEB IDENTITY FEDERATION
 

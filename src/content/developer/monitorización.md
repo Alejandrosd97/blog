@@ -17,4 +17,7 @@ Cloudwatch Dimensions son parejas de clave-valor que se pueden usar para filtrar
 Se utiliza en event-driven apps. Un evento se puede difinir como un cambio de estado
 También se puede usar para programar eventos. Eventbridge es la forma recomendada para manejar los eventos, por delante de Cloudwatch Logs. Debido a que ambas utilizan el mismo servicio y API, todos los cambios que se hagan en uno apareceran en la consola del otro. la diferencia radica en que Eventbridge tiene mas funcionalidades. Cuando un evento ocurre, se envía a Eventbridge, que desencadena una regla y la acción consiguiente, por ejemplo, si se crea un EC2 que no cumple con los requerimientos legales, Config lo detecta y genera un evento. En es caso, una posible respuesta de Eventbridge sería enviar un mensaje via SNS. Cloudwarch, Eventbridge y SNS están muy bien integrados.
 
+##### AWS Budgets 
+Permite a los clientes establecer presupuestos personalizados y recibir alertas si sus costes o uso exceden, o se prevé que excederán la cantidad presupuestada. AWS requiere aproximadamente cinco semanas de datos de uso para generar pronósticos presupuestarios. Si se configura un presupuesto para que emita una alerta basada en una cantidad pronosticado, esta alerta de presupuesto no se activa hasta que tenga suficiente información histórica de uso.
+
 

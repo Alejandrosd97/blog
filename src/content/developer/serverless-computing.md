@@ -22,6 +22,8 @@ Generalmente, para llamar a una función lambda se emplea API Gateway, pero tamb
 
 Otra opción es configurar dead-letter-queues, que guardan ejecuciones fallidas para procesarlas posteriormente. Se puede usar SQS para mantener los eventos fallidos hasta que sean recogidos o SNS para enviar notificaciones a múltiples destinaciones. Lambda destinations sirve para enviar regitros de invocación de una función a otro servicio, dependiendo de si la ejecución ha sido exitosa o no, se envía a un sitio u otro.
 
+Lambda asigna potencia de CPU en proporción a la cantidad de memoria configurada. La memoria es la cantidad de memoria disponible para la función en tiempo de ejecución. Se puede aumentar o disminuir la memoria y la potencia de la CPU asignada a la función usando la configuración de memoria.
+
 
 ##### LAMBDA DEPLOYMENT PACKAGE
 
@@ -45,4 +47,14 @@ Tipos de workflows:
 - Express: At-least-one, se ejecuta por lo menos una vez aunque pueden ser mas. Útil para acciones idempotentes, por ejemplo leer de una db. Puede ser síncrono o asíncrono. Útil para workflows cortos.
 
 Una petición es no-idempotente si siempre causa un cambio de estado, por ejemplo, enviar el mismo email muchas veces cambia el estado del mailbox. Idempotente es cuando otra petición exactamente igual no genera efectos adversos. 
-lastic Computing Cloud
+
+##### LAMBDA DEPLOYMENT PACKAGE Y API GATEWAY MOCK ENDPOINT
+Si la función lambda se crea en la consola de AWS el archivo comprimido Zip que contiene el código  se crea solo de manera automática. Si se crea el código en un editor externo, para ser subido a AWS se debe comprimir manualmente en un Zip que no puede pesar mas de 50mb. En caso de ser más pesado, se sube a S3 en la misma región. Las capas son archivos Zip referenciados por la función lambda, TERMINAR
+
+Podmos importar apis externas importando el description file
+
+API Gateway Point simula las respuestas que devolvería la API sin necesidad de desplegar un backend real, lo cual es muy útil para hacer tests de los frontends.
+
+##### X-RAY
+Sirve para depurar aplicaciones distribuidas. Proporciona una interfaz visual que muestra los pasos que sigue la petición y colecciona información como latencia, códigos de status y errores. Esto se llama service map. Se necesita instalar el X-ray SDK en la instancia EC2 de manera que envíe trazas a X-ray.
+

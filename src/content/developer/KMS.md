@@ -7,6 +7,10 @@ heroImage: '/blog-placeholder-1.jpg'
 
 Existen dos tipos de encriptación, simétrica y asimétrica. En la simétrica se usa la misma clave para encriptar y desencriptar la información, mientra que en la asimétrica se genera un par de claves, una pública que se usa para encriptar y una privada que se usa para desencriptar.
 
+Una Customer Master Key (CMK) es una representación lógica de una clave maestra. La CMK incluye metadatos, como el ID de la clave, la fecha de creación, la descripción y el estado de la clave. La CMK también contiene el material de claves utilizado para cifrar y descifrar datos. 
+
+AWS KMS admite CMK simétricas y asimétricas. Una CMK simétrica representa una clave de 256 bits que se utiliza para cifrar y descifrar. Una CMK asimétrica representa un par de claves RSA que se utiliza para cifrado y descifrado o firma y verificación (pero no ambas), o un par de claves de curva elíptica (ECC) que se utiliza para firma y verificación.
+
 En el caso de la encriptación simétrica, AWS emplea Customer Master Keys (CMK). Esta clave puede encriptar archivos de hasa 4Kb, y es generada para encriptar y desencriptar la data key. Esta data key es la que se utiliza para encriptar y desencriptar la información. Esto se conoce como "envelope encryption".
 
 Si se quiere usar una clave simétrica, el usuario que lo haga deberá disponer de los permisos correspondientes. Para encriptar información fuera de KMS se necesita usar claves asimétricas. Se conoce como Key material a los secretos criptográficos que conforman la clave, pueden proveídos por el usuario o dejárselo a KMS. Si se activa la opción multi-región key plos archivos puden ser encriptados en una región y desencriptados en otra. La clave tiene una política asociada sobre quién puede administrarla y quién puede usarla para encriptar y desencriptar.

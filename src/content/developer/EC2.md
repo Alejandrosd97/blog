@@ -7,7 +7,7 @@ heroImage: '/blog-placeholder-1.jpg'
 
 
 
-### Elastic Computing Cloud
+### ELASTIC COMPUTING CLOUD
 
 
 Cloudwatch recoge data en intervalos de 5 minutos, esto es gratis, podemos activar detailed Cloudwatch monitoring para que recoja data cada minuto pero es de pago
@@ -16,7 +16,9 @@ Cloudwatch recoge data en intervalos de 5 minutos, esto es gratis, podemos activ
 - Compute optimized 
 - General purpose 
 - Memory optimized: para cuando necesitamos manejar datasets muy grandes en memoria
--Storage optimized: cuando necesitamos instancias con un mucho espacio ya attached, por ejemplo big data o analitics 
+-Storage optimized: cuando necesitamos instancias con un mucho espacio ya attached, por ejemplo big data o analitics.
+
+Las instancias de rendimiento ampliable, que son instancias T3, T3a y T2, están diseñadas para proporcionar un nivel básico de rendimiento de CPU con la capacidad de aumentar a un nivel superior cuando lo requiera su carga de trabajo. Las instancias de rendimiento ampliables son los únicos tipos de instancias que utilizan créditos para el uso de CPU. AWS afirma que, una cuenta AWS tiene menos de 12 meses, se puede utilizar una instancia t2.micro de forma gratuita dentro de ciertos límites de uso.
 
 La forma más común de conectarse a una instancia es mediante SSH. Lo primero es cambiar los permisos de la clave privada a 400 (solo lectura para el usuario y acceso denegado para los demás usuarios) y luego ejecutar el siguiente comando.
 
@@ -26,7 +28,7 @@ ssh -i /path/key-pair-name.pem instance-user-name@instance-public-dns-name
 
 Otra forma de conectarse a la instancia es mediante EC2 Instance Connect desde el dashboard de AWS. Se hace entrando a la vista de detalle de la instancia en en el boton connect. NDe esta manera no necesitamos configurar nada en nuestro ordenador local.
 
-Al crear una instancia de EC2, en el apartado opciones avanzadas, en el apartado user data, podemos especificar los scripts que queremos ejecutar cuando el sistema arranca, por ejemplo instalar apache y crear un documento HTML que para que lo sirva.
+Al crear una instancia de EC2, en el apartado opciones avanzadas, en el apartado user data, podemos especificar los scripts que queremos ejecutar cuando el sistema arranca, por ejemplo instalar apache y crear un documento HTML que para que lo sirva. Por defect, los scripts se ejecutan con privilegios de usuario root, por lo tanto, no necesitan el comando sudo. Cualquier archivo creado será propiedad de root. Si se necesita que usuarios que no son root tengan acceso a los archivos, se deben modificar los permisos en consecuencia en el script. De forma predeterminada, el user data se ejecuta solo durante el ciclo de inicio cuando se inicia una instancia por primera vez, para que ejecute cada vez que se reinicie la instancia, se debe actualizar la configuración.
 
 En la pagina de EC2, desde actions y security podemos cambiar el rol de la instancia. Las credenciales que nos provee el rol son siempre temporales, por lo que seran diferentes cada vez que nos conectemos a la instancia. Los roles son preferibles en terminos de seguridad ya que no hay que escribir las credenciales de manera "hard coded". Los roles son definidos por las politicas.
 
@@ -38,6 +40,10 @@ Además del [Application Load Balancer y el Network Load Balancer](/blog), exist
 Tambien existe el Gateway Load Balancer
 
 Existe un header llamado X-Forwarded-For, el cual nos indica de donde proviene originalmente la peticion, ya que el servidor recibe la peticion desde la ip del load balancer, no deles to se produce cuando el load balancer no ha sido capaz de comunicarse con el servidor.
+
+ELB Access Logs proporciona registros de acceso que guardan información detallada sobre las solicitudes enviadas al load balancer. Cada registro contiene información como la hora de la solicitud, la dirección IP del cliente, latencias, rutas y respuestas del servidor. Estos registros se usan para analizar patrones de tráfico y solucionar problemas. Es opcional y está deshabilitado de manera predeterminada.
+
+ALB Request Tracker realiza un seguimiento de las solicitudes HTTP. El load balancer agrega un encabezado con un identificador de seguimiento a cada solicitud que recibe. No sirve para analizar datos específicos de latencia.
 
 ##### AWS CLI
 

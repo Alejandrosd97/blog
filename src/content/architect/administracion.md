@@ -13,8 +13,15 @@ CDK es parecido a Cloudformation pero en vez de yaml o yaml se utilizan lenguaje
 ##### CLOUDWATCH
 Monitorea los recursos y las aplicaciones ejecutándose en ellos y proporciona métricas en tiempo real. Recibe los logs y de ahí extrae la información. Se pueden configurar alarmas que se activan ante determinados eventos (como cambios de estado) o umbrales y que así enviar notificaciones mediante SNS. Es útil para integrarlo con otros servicios como Autoescaling, para que escale cuando determinadas métricas como el uso de la CPU superen el umbral marcado. Ofrece un dashboard para visualozar los datos de manera más gráfica.
 
+CloudWatch Events ofrece un flujo casi en tiempo real de eventos del sistema que describen cambios en los recursos. Estos eventos ayudan a activar notificaciones basadas en cambios que ocurren en los servicios de AWS. Sin embargo no se puede utilizar CloudWatch Events para depurar y rastrear datos entre cuentas.
+
+
 ##### X-RAY
-Recibe "traces" de las applicaciones y los servicios de AWS que están integradas con ellas de manera nativa. Es útil para debuggear y ver, por ejemplo, si hay algun cuello de botella, ya que aporta información como el tiempo de procesamiento de la petición en cada parte de la app. Trace es cada petición individual al servidor, con todas las fases por las que atraviesa. Una trace es una colección de segmentos, que representan una unidad de data en X-Ray.
+Recibe trazas de las applicaciones y los servicios de AWS que están integradas con ellas de manera nativa. Es útil para depurar y analizar y depurar aplicaciones distribuidas en producción, por ejemplo, se puede ver si hay algún problema de rendimiento, como cuello de botella en algún punto, ya que aporta información relevante como el tiempo de procesamiento de la petición en cada parte de la app. Cada cada petición individual al servidor es una traza, con todas las fases por las que atraviesa a medida que viaja de un extremo al otro de la aplicación. Una traza es una colección de segmentos, que representan una unidad de data en X-Ray.
+
+Puede utilizar X-Ray para recopilar datos en cuentas de AWS. El agente de X-Ray puede asumir una función para publicar datos en una cuenta diferente de aquella en la que se ejecuta. Esto le permite publicar datos de varios componentes de su aplicación en una cuenta central.
+
+Si se personalizan las reglas de muestreo, puede controlar la cantidad de datos que registra y modificar el comportamiento de muestreo sobre la marcha sin modificar ni volver a implementar el código. Las reglas de muestreo le indican al SDK de X-Ray cuántas solicitudes debe registrar para un conjunto de criterios.
 
 ##### AWS HEALTH DASHBOARD
 Proporciona avisos y alertas que podrían afectar a los recursos de la cuenta, por ejemplo cambios que AWS está llevando a cabo que podrían afectar a algunos servicios en uso o mantenimiento en alguna región. Existen dos tipos de eventos:

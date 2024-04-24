@@ -46,10 +46,10 @@ Es una base de datos en memoria que puede escalar masivamente (hasta mas de 100t
 
 ##### PARAMETER STORE
 
-Se encuentra del apartado Systems Manager. Sirve para guardar información confidencial como contraseñas, connection strings de bases de datos, etc... de manera que puedan ser usadas en otros servicios de manera segura, por ejemplo como comandos al arrancar una instancia
+Se encuentra del apartado Systems Manager. Sirve para guardar información confidencial como contraseñas, connection strings de bases de datos, etc... de manera que puedan ser usadas en otros servicios de manera segura, por ejemplo como comandos al arrancar una instancia. No se puede utilizar para rotar automáticamente las credenciales de la base de datos.
 
 
 
 ##### SECRETS MANAGER
 
-Tiene algunas similitudes con Parameter Store. La encriptacion se realiza mediante una Customer Master Key (CMK), que es una representacion lógica de una master key, la cual contiene el material de la clave para encriptar los datos. Secret rotation es hecho por lambda. Se puede guardar un secreto, como credenciales de una RDS, y asociarlo con ella. La rotación se puede activar según los dias que qse desee y AWS lo hará de manera automática. La diferencia con Parameter Store es que Secrets Manager es mas específico, por ejemplo, se usa para guardar de manera segura credenciales de db y API keys además de rotación de contraseñas, mientras que Paramter Store se usa para variables de configuración.
+Tiene algunas similitudes con Parameter Store. La encriptación se realiza mediante una Customer Master Key (CMK), que es una representacion lógica de una master key, la cual contiene el material de la clave para encriptar los datos. Secret rotation es hecho por lambda. Se puede guardar un secreto, como credenciales de una RDS, y asociarlo con ella. La rotación se puede activar según los dias que qse desee y AWS lo hará de manera automática. La diferencia con Parameter Store es que Secrets Manager es mas específico, por ejemplo, se usa para guardar de manera segura credenciales de base de datos y claves de API además de rotación de contraseñas, mientras que Paramter Store se usa para variables de configuración. Ofrece rotación de secretos con integración para Amazon RDS, Amazon Redshift y Amazon DocumentDB.

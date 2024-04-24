@@ -20,6 +20,8 @@ Cada red trae por defecto un Security Group y un Network Accces Control List (NA
 
 Las subnets pueden ser privadas o públicas, todas las subnets deben estar dentro del CIDR block de la VPC. Las tres primeras IPs estan reservadas para AWS (.1 ,2 y .3). La primera (.0) es la network address y la ultima (.255) esla broadcast address. No es necesario que cada subnet tenga su propia tabla de rutas, puede ser la misma para todas. Las subnets, por defecto son privadas. Para hacerlas publicas a internet se necesita un gateway, para ello, se crea un gateway y una nueva tabla de rutas, se le añade una ruta nueva (0.0.0.0) y se la asocia al gateway creado.
 
+Los registros de flujo de VPC (VPC FLow Logs) son una función que permite recopilar información sobre el tráfico IP que va hacia y desde las interfaces de red en una VPC. Los datos del registro de flujo se utilizan para analizar los rastros de la red y ayudan con la seguridad. Los datos del registro de flujo se pueden publicar en Amazon CloudWatch Logs o Amazon S3. No es posible utilizar registros de flujo de VPC para depurar y rastrear datos entre cuentas.
+
 ##### ROUTING
 Cada VPC tiene una tabla de rutas principal y un router implícito. Una lista de prefijos es un mapeo predefinido de todas las ips para los endopoints que apuntan a un determinado servicio.
 
@@ -104,6 +106,8 @@ Sirve para establecer conexiones seguras a VPC endpoints. Establece conexiones a
 
 ##### CLOUDFRONT
 Funciona como un CDN, cachea archivos en edge locations para que el tiempo de respuesta sea menor. Cloudfront cachea los archivos del origen y los envía diferentes edge locations repartidas por todo el mundo, para ello se debe crear una distribución, que es una configuración donde se especifica el origen. Si el archivo se encuentra en la edge location se lo devuelve y si no, se envia desde el servidor principal, pero se crea una copia en cache en el edge location de manera que la siguiente vez si lo devuelve. El contenido en cache se queda disponible durante un tiempo (time to live), este tiempo marca la validez del archivo antes de que la edge location vuelva a requerir el archivo al servidor principal, normalmente es de 24h. Si hacemos un cambio en el archivo podemos hacer un cache invalidation, se borra el cache y cuando un usuario hace una peticion, como el edge location no tiene el archivo, lo pide al servidor principal y lo vuelve a cachear. Se pueden invalidar objetos especificos o todos los objetos de una distribucion. El cloudfront nos da un dominio para que podamos acceder a los archivos. S3 Transfer Acceleration mejora la velocidad de carga a un bucket S3 para usuarios globales mediante Cloudfront.
+
+Los usuarios de IAM no pueden crear pares de claves de CloudFront, solo el usuario root es tiene esa capacidad. Para crear URL firmadas o cookies firmadas, necesita un firmante. Un firmante es un grupo de claves confiable que se crea en CloudFront o una cuenta de AWS que contiene un par de claves de CloudFront. AWS recomienda su uso en lugar de pares de claves de CloudFront.
 
 ##### LAMBDA@EDGE y CLOUDFUNCTIONS
 Ambas son funciones lambda que corren en el edge location, lo cual permite ejecutar lógica de backend en las edge locations. Cloudfunctions se utilizan para ejecutar funciones ligeras y cortas, como por ejemplo manipular el header de una petición o redirecciones de url. Lambda@edge, por su parte, son apropiadas para funciones largas o que dependan de librerias de terceros, funciones que requieran de acceso a internet, o que requieran acceso al body de la petición.

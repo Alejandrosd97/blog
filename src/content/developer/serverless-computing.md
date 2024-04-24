@@ -27,14 +27,13 @@ Otra opción es configurar dead-letter-queues, que guardan ejecuciones fallidas 
 
 Si creamos la funcion en la consola de AWS, el archivo zip se crea solo de manera automatica. Si creamos el código fuera y lo queremos subir tenemos que hacer un zip que no puede pesar mas de 50Mb,en caso de pesar mas, debemos subirlo a un bucket en la misma región. Las layers son archivos zip referenciados por la funcion lambda.
 
-
-
-
 ##### API GATEWAY
 
-Servicio pensado para publicar y manejar APIs en AWS. Soporta RESTful APIs y Websockets APIs. API gateway es serverless y se integra con Cloudwatch.
+Servicio pensado para publicar y manejar APIs en AWS. Soporta RESTful APIs y Websockets APIs. API gateway es serverless y se integra con Cloudwatch. Se deben conceder a las funciones lambda los permisos necesarios para que acceda a los recursos necesarios mediante un rol, ya que con los permisos por defecto, solo envia logs a Cloudwatch.
 
-Se deben conceder a las funciones lambda los permisos necesarios para que acceda a los recursos necesarios mediante un rol, ya que con los permisos por defecto, solo envia logs a Cloudwatch.
+Algunas estrategias para optimizar una API y mejorar la capacidad de respuesta son el almacenamiento en caché de respuestas y la compresión de carga útil. El almacenamiento en caché de API es útil para almacenar en caché las respuestas de un endpoint. Con el caché, se puede reducir la cantidad de llamadas realizadas al endpoint y también mejorar la latencia de las solicitudes a la API.
+
+Un autorizador Lambda (Lambda Authorizer) de API Gateway es una función Lambda proporcionada para controlar el acceso a una API. Utiliza estrategias de autenticación de tokens de portador, como OAuth o SAML. Antes de crearlo, primero se debe crear la función AWS Lambda que implementa la lógica para autorizar y, si es necesario, autenticar a la persona que hace la llamada a la API.
 
 
 ##### STEP FUNCTIONS
@@ -46,3 +45,4 @@ Tipos de workflows:
 - Express: At-least-one, se ejecuta por lo menos una vez aunque pueden ser mas. Útil para acciones idempotentes, por ejemplo leer de una db. Puede ser síncrono o asíncrono. Útil para workflows cortos.
 
 Una petición es no-idempotente si siempre causa un cambio de estado, por ejemplo, enviar el mismo email muchas veces cambia el estado del mailbox. Idempotente es cuando otra petición exactamente igual no genera efectos adversos. 
+lastic Computing Cloud

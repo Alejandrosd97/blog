@@ -2,7 +2,7 @@
 title: 'Código binario'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/binary.svg'
 ---
 
 ##### NOTACIÓN DECIMAL
@@ -25,4 +25,4 @@ Cada plaza en un número binario se conoce com bit (digital bit). Cada bit puede
 juntos en conjuntos de ocho, llamados bytes. Teniendo en cuenta todo lo anterior, se puede calcular que un bit puede expresar 2⁸ valores diferentes, lo que hace un total de 256,  o lo que es lo mismo, de 0 a 255.
 
 ##### NOTACIÓN HEXADECIMAL
-Además del decimal y el binario, existe otro sistema de notación importante de conocer en computación, se trata del hexadecimal. Éste es de base 16 y utiliza 16 símbolos. Además de los números del 0 al 9, utiliza las letras a, b, c, d, e y f para los 6 símbolos restantes, por lo el número d equivaldría al 14 en decimal. Teniendo en cuenta que el sistema hexadecimal puede expresar 16 valores en un solo dígito es fácil hacer conversiones a binario puesto que cada dígito en hex equivale a 4 bits de información en binario. Por ejemplo el número 2f se traduciria como 0010 1111
+Además del decimal y el binario, existe otro sistema de notación importante de conocer en computación, se trata del hexadecimal. Éste es de base 16 y utiliza 16 símbolos. Además de los números del 0 al 9, utiliza las letras a, b, c, d, e y f para los 6 símbolos restantes, por lo que el número d equivaldría al 14 en decimal. Teniendo en cuenta que el sistema hexadecimal puede expresar 16 valores en un solo dígito es fácil hacer conversiones a binario puesto que cada dígito en hex equivale a 4 bits de información en binario. Por ejemplo el número 2f se traduciria como 0010 1111

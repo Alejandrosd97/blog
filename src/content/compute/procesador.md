@@ -2,7 +2,7 @@
 title: 'El procesador'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/procesador.svg'
 ---
 
 La función principal de un procesador es ejecutar instrucciones, y su organización está condicionada por las tareas que debe realizar y cómo deben ser realizadas. Los procesadores están diseñados y funcionan según una señal de sincronización. Esta señal, conocida como señal de reloj, es una señal en forma de onda periódica cuadrada con cierta frecuencia. Todas las operaciones realizadas por el procesador son gobernadas por esta señal, un ciclo de reloj determina la unidad básica de tiempo, es decir, la duración mínima de una operación de un procesador. La cantidad de ciclos de reloj necesarios para llevar a cabo una operación depende de la instrucción y sus operandos.
@@ -39,12 +39,12 @@ Los registros de direcciones se utilizan para acceder a la memoria y pueden alma
 
 - Registros de acceso a la memoria: Hay dos registros necesarios para las operaciones de lectura y escritura: Registro de la dirección de memoria (MAR), donde se coloca la dirección de memoria que aAlgunos de estos registros se utilizan implícitamente para diferentes funciones, como acceder a la pila, dirigir segmentos de memoria o Algunos de estos registros se utilizan implícitamente para diferentes funciones, como acceder a la pila, dirigir segmentos de memoria o soportar memoria virtual.soportar memoria virtual. la que se desea acceder y el registro de búfer de memoria (MBR), que es donde la memoria coloca la información leída la que se quiere escribir. FALTA
 
--Registros de control y status: Almacenan información sobre el estado del procesador.
+- Registros de control y status: Almacenan información sobre el estado del procesador.
 Los bits del registro de estado son modificados por el procesador como resultado de la ejecución de algunos tipos de instrucciones y como consecuencia de algún evento, como por ejemplo solicitudes de interrupción. Estos bits son parcialmente visibles para el programador, en algunos casos al ejecutar instrucciones específicas.
 
 ##### ALU
 Es un circuito combinacional capaz de realizar operaciones aritméticas y lógicas con números enteros y reales. Las operaciones que se pueden realizar están definidas por el set de instrucciones.
-Los números íntegros se pueden representar usando diferentes magnitude, siendo la común hoy en día el complemento de dos. El número de bits más común es 32 o 64. Los números reales, por su parte se pueden representar de dos maneras diferentes, punto fijo y punto flotante. En la notación de punto fijo, la posición de la coma está fijada y una cantidad específica de bits se usa para la parte entera y otro para la decimal. En la notación de punto flotante, se usan tres campos, uno para el signo, una para el significando y otra para el exponente.
+Los números íntegros se pueden representar usando diferentes magnitudes, siendo la común hoy en día el complemento a dos. El número de bits más común es 32 o 64. Los números reales, por su parte se pueden representar de dos maneras diferentes, punto fijo y punto flotante. En la notación de punto fijo, la posición de la coma está fijada y una cantidad específica de bits se usa para la parte entera y otro para la decimal. En la notación de punto flotante, se usan tres campos, uno para el signo, una para el significando y otra para el exponente.
 
 Las operaciones aritméticas habituales que puede realizar una ALU incluyen suma,
 resta, multiplicación y división. Además, se pueden incluir operaciones específicas de incrementos positivos (+1) o negativos (-1).

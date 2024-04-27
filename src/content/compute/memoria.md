@@ -2,7 +2,7 @@
 title: 'Memoria'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/ram.svg'
 ---
 
 Se puede clasificar la memoria según varias características. La primera es la localización de la memoria, dentro del chip del procesador suele haber registros y uno o varios niveles de memoria caché.

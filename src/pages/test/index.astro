@@ -19,6 +19,13 @@ import FormattedDate from '../../components/FormattedDate.astro';
 			main {
 				width: 960px;
 			}
+
+			.foto{
+				border-width: 4px;
+				border-style: solid;
+				border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+				border-radius:10px
+			}
 			ul {
 				display: flex;
 				flex-wrap: wrap;
@@ -92,30 +99,37 @@ import FormattedDate from '../../components/FormattedDate.astro';
 				<ul>
 					<li>
                         <a href={`/test/aws-solutions-architect`}>
-                            <img width={720} height={360} src="/blog-placeholder-1.jpg" alt="" />
+                            <img class="foto" width={720} height={500} src="/aws-architect.png" alt="" />
                             <h4 class="title">AWS Solutions Architect Associate</h4>
             
                         </a>
                     </li>
                     <li>
                         <a href={`/test/aws-developer-associate`}>
-                            <img width={720} height={360} src="/blog-placeholder-3.jpg" alt="" />
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
                             <h4 class="title">AWS Developer Associate</h4>
             
                         </a>
                     </li>
                     <li>
                         <a href={`/test/linux-professional-institute`}>
-                            <img width={720} height={360} src="/blog-placeholder-3.jpg" alt="" />
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
                             <h4 class="title">Linux Professional Institute</h4>
                         </a>
                     </li>
 					<li>
                         <a href={`/test/computer-science`}>
-                            <img width={720} height={360} src="/blog-placeholder-3.jpg" alt="" />
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
                             <h4 class="title">Computación general</h4>
                         </a>
                     </li>
+					<li>
+                        <a href={`/test/sistemas-operativos`}>
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
+                            <h4 class="title">Sistemas operativos</h4>
+                        </a>
+                    </li>
+
 				</ul>
 			</section>
 		</main>

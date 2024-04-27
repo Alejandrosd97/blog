@@ -2,12 +2,12 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../../layouts/BlogPost.astro';
 
-const {certificacion} = Astro.params
+//const {certificacion} = Astro.params
 
 export async function getStaticPaths() {
-	const posts = await getCollection('linux');
+	const posts = await getCollection('compute');
 	return posts.map((post) => ({
-		params: { certificacion : 'linux-professional-institute',  slug: post.slug },
+		params: { certificacion : 'computer-science',  slug: post.slug },
 		props: post,
 	}));
 }

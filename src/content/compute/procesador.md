@@ -2,7 +2,7 @@
 title: 'El procesador'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
-heroImage: '/procesador.svg'
+heroImage: '/cpu.jpeg'
 ---
 
 La función principal de un procesador es ejecutar instrucciones, y su organización está condicionada por las tareas que debe realizar y cómo deben ser realizadas. Los procesadores están diseñados y funcionan según una señal de sincronización. Esta señal, conocida como señal de reloj, es una señal en forma de onda periódica cuadrada con cierta frecuencia. Todas las operaciones realizadas por el procesador son gobernadas por esta señal, un ciclo de reloj determina la unidad básica de tiempo, es decir, la duración mínima de una operación de un procesador. La cantidad de ciclos de reloj necesarios para llevar a cabo una operación depende de la instrucción y sus operandos.

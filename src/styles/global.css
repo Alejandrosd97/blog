@@ -101,8 +101,6 @@ table {
 }
 img {
 	max-width: 100%;
-	object-fit: contain;
-	border-radius: 8px;
 }
 code {
 	padding: 2px 5px;

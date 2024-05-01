@@ -12,7 +12,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
-const tema = 'compute'
+const tema = 'programacion'
 
 const posts = (await getCollection(tema)).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -25,7 +25,9 @@ export const getStaticPaths = (() => {
         {params : { certificacion : 'aws-developer-associate'}},
         {params : { certificacion : 'linux-professional-institute'}},
 		{params : { certificacion : 'computer-science'}},
-		{params : { certificacion : 'sistemas-operativos'}}
+		{params : { certificacion : 'sistemas-operativos'}},
+		{params : { certificacion : 'programacion'}}
+
 
 
     ];
@@ -42,7 +44,7 @@ export const getStaticPaths = (() => {
   border-width: 4px;
   border-style: solid;
   border-image: linear-gradient(to right, darkblue, darkorchid) 1;
-  border-radius:10px
+  object-fit: cover;
 }
 			
 			main {
@@ -76,7 +78,6 @@ export const getStaticPaths = (() => {
 			}
 			ul li img {
 				margin-bottom: 0.5rem;
-				border-radius: 12px;
 			}
 			ul li a {
 				display: block;

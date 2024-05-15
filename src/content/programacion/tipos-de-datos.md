@@ -44,7 +44,7 @@ La forma tradicional de definir constantes en C es usar la directiva de preproce
 ###### STRLENGTH()
 Para usar las funciones predefinidas en C se debe incluir el módulo <string.h>. La función strlength() devuelve la longitud del string. 
 
-###### STRCOPY()
+###### STRCPY()
 Dado que no se puede asignar arrays con =, para asignar un valor a un string después de la declaración o modificar su valor existente, se debe usar strcpy(). Recibe tres parámetros, el primero indica donde se va a copiar; el segundo, el valor que va a recibir y el tercero, la cantidad de bytes que se desea copiar (para que no sea superior al tamaño del array). 
 
 ###### STRCAT()

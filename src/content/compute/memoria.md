@@ -111,3 +111,18 @@ La memoria virtual libera al programador de las restricciones de la memoria prin
 
 (las direcciones de la memoria principal). El espacio de memoria virtual utiliza como soporte un dispositivo de almacenamiento externo (normalmente un disco magnético), mientras que el espacio de memoria física corresponde a la memoria principal del ordenador.
 Hoy en día, prácticamente todos los ordenadores utilizan memoria virtual. No obstante el uso de la memoria virtual tiene sus desventajas. La traducción de las direcciones lógicas en direcciones físicas y la asignación del espacio de memoria física a los programas que se van a ejecutar. La memoria virtual es gestionada por el sistema operativo
+
+El código de cada programa está organizado en subrutinas, tiene estructuras iterativas y trabaja con conjuntos de datos agrupados. Esto, unido al hecho de que la ejecución del código es secuencial, hace que durante un intervalo de tiempo determinado sólo se utilice una pequeña parte de toda la información almacenada. Este fenómeno se denomina proximidad referencial. Esisten dos tipos de proximidad referencial:
+
+- Proximidad temporal: Es cuando, en un intervalo de tiempo dado, la probabilidad de que un programa acceda repetidamente a las mismas posiciones de memoria es muy alta. La proximidad temporal se debe principalmente a las estructuras iterativas; un bucle ejecuta repetidamente las mismas instrucciones, al igual que las llamadas repetitivas a subrutinas.
+
+- Proximidad espacial: Se da cuando, en un intervalo de tiempo determinado, la probabilidad de que un programa acceda a posiciones de memoria cercanas es muy alta. La proximidad espacial se debe principalmente a que la ejecución de los programas es secuencial, salvo excepciones se ejecutan las instrucciones una tras otra en orden y también al uso de estructuras de datos que se almacenan en direcciones de memoria contiguas.
+
+
+##### CACHÉ
+
+Se sitúa entre la memoria principal y el procesador y puede constar de uno o varios niveles, aunque el funcionamiento es el mismo en ambos casos.
+La caché tiene un tiempo de acceso más corto que la memoria principal para reducir el tiempo medio de acceso a los datos, pero también tiene un tamaño mucho menor. Si los datos están en la caché, es posible que el procesador acceda a ellos sin acceder a la memoria principal. En caso contrario, los datos se llevan primero de la memoria principal a la caché, y luego el procesador accede a ellos.
+Si, en la mayoría de los accesos a la memoria, los datos están en la memoria caché, el tiempo medio de acceso será similar al tiempo de acceso a la caché. Esto es posible gracias a que los programas utilizan la proximidad referencial.
+
+Para trabajar con la caché, la memoria principal se organiza en bloques de palabras, de forma que cuando hay que transferir datos de la memoria principal a la caché, se toma de la memoria un bloque entero de palabras, no palabras sueltas. La memoria caché también está organizada en bloques llamados líneas. Cada línea consta de un conjunto de palabras (el mismo número de palabras que un bloque de memoria principal), más una etiqueta compuesta por unos pocos bits. El contenido de la etiqueta indica qué bloque de la memoria principal se encuentra en cada línea de la caché en un momento dado

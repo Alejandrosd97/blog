@@ -127,4 +127,31 @@ Si, en la mayoría de los accesos a la memoria, los datos están en la memoria c
 
 Para trabajar con la caché, la memoria principal se organiza en bloques de palabras, de forma que cuando hay que transferir datos de la memoria principal a la caché, se toma de la memoria un bloque entero de palabras, no palabras sueltas. La memoria caché también está organizada en bloques llamados líneas. Cada línea consta de un conjunto de palabras (el mismo número de palabras que un bloque de memoria principal), más una etiqueta compuesta por unos pocos bits. El contenido de la etiqueta indica qué bloque de la memoria principal se encuentra en cada línea de la caché en un momento dado
 
-CCuando el procesador busca un dato i la palabra de memoria está almacenada en la memoria caché, se proporciona al procesador, y se dice que se ha producido un acierto. En caso contrario, el bloque de datos de la memoria principal que contiene la palabra de memoria se lleva a la memoria caché y, cuando la palabra ya está en la memoria caché, se proporciona al procesador; en este caso se dice que se ha producido un fallo.
+CCuando el procesador busca un dato i la palabra de memoria está almacenada en la memoria caché, se proporciona al procesador, y se dice que se ha producido un acierto. En caso contrario, el bloque de datos de la memoria principal que contiene la palabra de memoria se lleva a la memoria caché y, cuando la palabra ya está en la memoria caché, se proporciona al procesador. En este caso se dice que se ha producido un fallo.
+
+Cuando se produce un fallo, el hardware de la caché solicita a la memoria principal el bloque en el que se encuentran los datos que produjeron el fallo. Luego, lleva el bloque de datos solicitado a la memoria caché y el procesador los obtiene de allí como si se hubiera producido un hit. Debido a la menor velocidad de acceso a la RAM, es importante minimizar fallos de caché para que el redndimiento no se vea afectado. Por norma general, la tasa de fallos esperada es de menos del 10%.
+
+###### CACHÉ LINE
+La memoria caché está organizada en líneas. Una línea está formada por un conjunto de palabras más una etiqueta que identifica qué bloque de la memoria principal ocupa esa línea de la memoria caché.
+
+El tamaño de la línea suele tener una tamaño de entre 32 y 128 bytes. Aumentar el tamaño de la línea permite aprovechar la localidad espacial, pero hasta cierto punto. Cuando se produce un fallo, el tiempo necesario para mover una línea más grande aumenta. Además, el número de líneas disponibles en la memoria caché disminuye, ya qu su tamaño es fijo. Como consecuencia hay más competencia para conseguir un bloque de espacio, lo que eliminará de la caché líneas que aún no se han utilizado completamente y reducirá el efecto de la localidad espacial, con el riesgo del aumento de la tasa de fallos.
+
+###### ASIGNACIÓN
+El número de líneas disponibles en la caché es siempre mucho menor que el número de bloques de memoria principal. En consecuencia, la caché, además de la información almacenada, debe mantener cierta información que relacione cada posición de la caché con su dirección en la memoria principal.
+Para acceder a los datos, hay que especificar la dirección en la memoria principal. A partir de esta dirección es necesario verificar si los datos se encuentran en la caché. Esta verificación se hará a partir del campo de etiqueta que indica qué bloque de memoria principal se encuentra en cada una de las líneas de caché.
+
+###### MAPEO DIRECTO
+un bloque de la memoria principal sólo puede estar en una única línea
+de la memoria caché. La caché de asignación directa tiene la tasa de fallos más alta, pero se utiliza con frecuencia porque es la más barata y fácil de gestionar.
+
+Para utilizar este tipo de caché, cada bloque de la memoria principal se asigna a una única línea de caché. Para relacionar una línea de caché con un bloque de memoria principal a partir de la dirección especificada para acceder a una palabra de la memoria principal, es necsario determinar a qué bloque pertenece la dirección. La dirección se divide en dos partes: el número de bloque, que corresponde a la parte más significativa de la dirección, y el número de palabra, que corresponde a la parte menos significativa.
+
+Para determinar a qué línea de caché se puede asignar cada bloque, se debe dividir el número de bloque en dos partes: una etiqueta, que corresponde a la parte más significativa del número de bloque, y un número de línea, que corresponde a la parte menos significativa.
+
+Cuando un bloque se lleva de la memoria principal a la línea correspondiente de la memoria caché, el número de la etiqueta del bloque se almacena en el campo etiqueta de la línea, de forma que se puede saber cuál de los bloques está almacenado en esta línea de la caché. El campo tag es el que permite identificar de forma única cada uno de los bloques que se puede asignar a una misma línea de la memoria caché.
+
+Si la etiqueta de dirección y la etiqueta de línea no coinciden, se prduce un fallo y será necesario mover todo el bloque de memoria principal a la caché, sustituyendo el bloque almacenado actualmente.
+
+###### MAPEO ASOCIATIVO
+A diferencia de la caché directa, un bloque de memoria principal puede encontrarse en cualquier línea de caché. Para relacionar una línea de caché con un bloque de memoria principal a partir de la dirección especificada para acceder a una palabra de la memoria principal, es necesario determinar a qué bloque pertenece la dirección. La dirección se divide en dos partes. El número de bloque corresponde a la parte más significativa de la dirección y el número de palabra
+que corresponde a la parte menos significativa.

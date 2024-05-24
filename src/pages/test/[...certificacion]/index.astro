@@ -12,7 +12,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
-const tema = 'compute'
+const tema = 'javascript'
 
 const posts = (await getCollection(tema)).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -21,6 +21,7 @@ const posts = (await getCollection(tema)).sort(
 
 export const getStaticPaths = (() => {
     return [
+		{params : { certificacion : 'javascript'}},
         {params : { certificacion : 'aws-solutions-architect'}},
         {params : { certificacion : 'aws-developer-associate'}},
         {params : { certificacion : 'linux-professional-institute'}},

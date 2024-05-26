@@ -22,6 +22,7 @@ const posts = (await getCollection(tema)).sort(
 export const getStaticPaths = (() => {
     return [
 		{params : { certificacion : 'javascript'}},
+		{params : { certificacion : 'typescript'}},
         {params : { certificacion : 'aws-solutions-architect'}},
         {params : { certificacion : 'aws-developer-associate'}},
         {params : { certificacion : 'linux-professional-institute'}},

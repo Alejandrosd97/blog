@@ -105,5 +105,17 @@ const javascript = defineCollection({
 	}),
 });
 	
+const typescript = defineCollection({
+	type: 'content',
+	// Type-check frontmatter using a schema
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		// Transform string to Date object
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		heroImage: z.string().optional(),
+	}),
+});
 
-export const collections = { blog, developer, architect, compute, os, javascript };
+export const collections = { blog, developer, architect, compute, os, javascript, typescript };

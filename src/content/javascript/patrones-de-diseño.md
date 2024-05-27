@@ -1,5 +1,5 @@
 ---
-title: 'Programación orientada a objetos'
+title: 'Patrones de diseño'
 description: 'Explicación de AWS Command Line Interface'
 pubDate: 'Jul 01 2023'
 heroImage: '/blog-placeholder-1.jpg'

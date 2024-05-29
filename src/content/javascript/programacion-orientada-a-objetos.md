@@ -9,6 +9,8 @@ heroImage: '/blog-placeholder-1.jpg'
 ##### CLASES
 Las clases son una funcionalidad introducida en ES6 que proporciona una forma más estructurada y limpia de trabajar con objetos. Puede contener atributos y funciones, que en este caso se llaman métodos. Para definir métodos dentro de una clase no es necesario usar la palabara clave function, se escribe el nombre de la función directamente seguido de paréntesis para los argumentos y corchetes para la lógica.
 
+Las clases en Javascript no lo son como tal, puesto que no es un lenguaje de programación orientado a objetos, sino que son lo que se conoce como "sintactic sugar" del mecanismo de herencia basada en prototipos. Simplemente ofrece una forma más sencilla de trabajar con los objetos existentes
+
 Para crear una instancia de una clase se usa la palabra clave new y nombre de la clase, seguido de paréntesis con los argumentos necesarios en el constructor, que se ejecuta de manera automática en el momento de la creación de la instancia. El constructor se suele usar para asignar propiedades y validar datos.
 
 Un método puede acceder a propiedades del objeto o hacer uso de otro método de la clase, pero se debe usar la palabra this. 

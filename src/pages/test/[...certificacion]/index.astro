@@ -10,28 +10,29 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../../components/FormattedDate.astro';
 
-const tema = 'javascript'
 
-const posts = (await getCollection(tema)).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+// .sort(
+// 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+
+const tema = certificacion
+
+const posts = (await getCollection(tema));
+
+console.log(posts)
+
 
 
 export const getStaticPaths = (() => {
     return [
 		{params : { certificacion : 'javascript'}},
 		{params : { certificacion : 'typescript'}},
-        {params : { certificacion : 'aws-solutions-architect'}},
-        {params : { certificacion : 'aws-developer-associate'}},
-        {params : { certificacion : 'linux-professional-institute'}},
-		{params : { certificacion : 'computer-science'}},
+        {params : { certificacion : 'aws-architect'}},
+        {params : { certificacion : 'aws-developer'}},
+        {params : { certificacion : 'linux'}},
+		{params : { certificacion : 'computacion'}},
 		{params : { certificacion : 'sistemas-operativos'}},
-		{params : { certificacion : 'programacion'}}
-
-
-
+		{params : { certificacion : 'programacion-c'}}
     ];
 }) satisfies GetStaticPaths;
 

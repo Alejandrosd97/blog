@@ -5,9 +5,9 @@ import BlogPost from '../../../layouts/BlogPost.astro';
 //const {certificacion} = Astro.params
 
 export async function getStaticPaths() {
-	const posts = await getCollection('javascript');
+	const posts = await getCollection('programacion');
 	return posts.map((post) => ({
-		params: { certificacion : 'javascript',  slug: post.slug },
+		params: { certificacion : 'programacion',  slug: post.slug },
 		props: post,
 	}));
 }

@@ -29,6 +29,9 @@ juntos en conjuntos de ocho, llamados bytes. Teniendo en cuenta todo lo anterior
 ##### NOTACIÓN HEXADECIMAL
 Además del decimal y el binario, existe otro sistema de notación importante de conocer en computación, se trata del hexadecimal. Éste es de base 16 y utiliza 16 símbolos. Además de los números del 0 al 9, utiliza las letras a, b, c, d, e y f para los 6 símbolos restantes, por lo que el número d equivaldría al 14 en decimal. Teniendo en cuenta que el sistema hexadecimal puede expresar 16 valores en un solo dígito es fácil hacer conversiones a binario puesto que cada dígito en hex equivale a 4 bits de información en binario. Por ejemplo el número 2f se traduciría como 0010 1111
 
+##### NOTACIÓN SEXGESIMAL
+En lugar de inventar un alfabeto de 60 símbolos distintos, los sumerios utilizaron una notación híbrida. Escribieron los números del 0 al 59 en la base 10 existente, pero trataron estos símbolos compuestos como números individuales en un sistema de base 60. Por ejemplo, los símbolos 11:23:13 representarían el siguiente número:  11 × 602 + 23 × 601 + 13 × 100 = 39,889 en base 10. Un ejemplo 
+de uso de este sistema es la representación horaria.
 
 ##### CONVERSIÓN ENTRE NOTACIONES 
 Para convertir un número decimal en binario, se divide entre dos, si el resto es 0, entonces se anota un 0 y si no lo es se nota un 1. el resultado se divide entre 2 otra vez y se anota otro 0 o 1 dependiendo del resto de la división, y así sucesivamente hasta que el resultado sea 1. El número binario equivalente será el conjunto de todos los números anotados durante el proceso en un orden tal que el último número es el bit más significante.
@@ -57,3 +60,4 @@ Por ejemplo, si se utilizan seis bits para representar el número 00 1010 (10) y
 Si se utilizan diez bits para representar el valor "11 1111 0001" (-15) utilizando el complemento a dos, y este signo se extiende a 16 bits, la nueva representación es "1111 1111 1111 0001". Así, al rellenar el lado izquierdo con unos, se mantienen el signo negativo y el valor del número original.
 
 El complemento a 2 tiene la ventaja de que solo utiliza una combinación para el 0, por lo que puede representar un valor más con el mismo número de bits, de – (2^n – 1) a (2^n-1 -1). En el caso del carry final, al sumar números representados mediante complemento a 2, simplemente se desecha, no se añade al resultado final como en el caso del complemento a 1. Esto se cumple siempre y cuando no ocurra desbordamiento. Otra ventaja es que las operaciones de adcición son más sencillas
+

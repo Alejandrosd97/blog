@@ -10,17 +10,8 @@ export default function LinkAnterior({postAnterior}) {
     console.log(previousPostLink)
     return (
 
-postAnterior && <div className='postPrevio'
-      onMouseEnter={()=>setPreviousPostLink(true)}
-      onMouseLeave={()=>setPreviousPostLink(false)}>
-      {/* <span className='linkPrevio'>POST PREVIO</span> 
-      <div className={previousPostLink ? 'fotoPrevio' : 'fotoPrevio hidden'}>
-        <img src='https://picsum.photos/seed/picsum/200/300' alt="foto" />
-        <div className='tarjetaPrevio'>
-          <h3 className='tituloPrevio'> { postAnterior ? postAnterior.title : ''}</h3> */}
-          <a className="linkPrevio" href={`/blog/javascript/${postAnterior.slug}`}>{postAnterior.slug}</a>
-        {/* </div>
-      </div> */}
+postAnterior && <div className='postPrevio'>
+      <a className="linkPrevio" href={`/blog/javascript/${postAnterior.slug}`}>{postAnterior.slug}</a>
     </div>
     )
 }

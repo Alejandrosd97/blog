@@ -2,17 +2,16 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../../layouts/BlogPost.astro';
 
-//const {certificacion} = Astro.params
 
 export async function getStaticPaths() {
-	const posts = await getCollection('javascript');
-	return posts.map((post) => {
-		return
-		{params: { certificacion : 'programacion' }
-		props: post}
-	});
+	const posts = await getCollection('sistemas-operativos');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
 }
-type Props = CollectionEntry<'developer'>;
+
+type Props = CollectionEntry<'sistemas-operativos'>;
 
 const post = Astro.props;
 const { Content } = await post.render();

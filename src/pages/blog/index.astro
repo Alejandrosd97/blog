@@ -6,9 +6,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+// const posts = (await getCollection('blog')).sort(
+// 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+// );
 ---
 
 <!doctype html>
@@ -18,6 +18,13 @@ const posts = (await getCollection('blog')).sort(
 		<style>
 			main {
 				width: 960px;
+			}
+
+			.foto{
+				border-width: 4px;
+				border-style: solid;
+				border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+				border-radius:10px
 			}
 			ul {
 				display: flex;
@@ -90,19 +97,67 @@ const posts = (await getCollection('blog')).sort(
 		<main>
 			<section>
 				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
+					<li>
+                        <a href={`/blog/aws-architect`}>
+                            <img class="foto" width={720} height={500} src="/aws-architect.png" alt="" />
+                            <h4 class="title">AWS Solutions Architect Associate</h4>
+            
+                        </a>
+                    </li>
+					<li>
+                        <a href={`/blog/programacion-c`}>
+                            <img class="foto" width={720} height={500} src="/aws-architect.png" alt="" />
+                            <h4 class="title">Programación en C</h4>
+            
+                        </a>
+                    </li>
+					<li>
+                        <a href={`/blog/javascript`}>
+                            <img class="foto" width={720} height={500} src="/aws-architect.png" alt="" />
+                            <h4 class="title">Javascript</h4>
+            
+                        </a>
+                    </li>
+					<li>
+                        <a href={`/blog/typescript`}>
+                            <img class="foto" width={720} height={500} src="/aws-architect.png" alt="" />
+                            <h4 class="title">Javascript</h4>
+            
+                        </a>
+                    </li>
+					
+                    <li>
+                        <a href={`/blog/aws-developer`}>
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
+                            <h4 class="title">AWS Developer Associate</h4>
+            
+                        </a>
+                    </li>
+                    <li>
+                        <a href={`/blog/linux`}>
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
+                            <h4 class="title">Linux Professional Institute</h4>
+                        </a>
+                    </li>
+					<li>
+                        <a href={`/blog/hardware`}>
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
+                            <h4 class="title">Computación general</h4>
+                        </a>
+                    </li>
+					<li>
+                        <a href={`/blog/sistemas-operativos`}>
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
+                            <h4 class="title">Sistemas operativos</h4>
+                        </a>
+                    </li>
+					<li>
+                        <a href={`/blog/algoritmos`}>
+                            <img class="foto" width={720} height={260} src="/blog-placeholder-3.jpg" alt="" />
+                            <h4 class="title">Algoritmos</h4>
+                        </a>
+                    </li>
+
 				</ul>
 			</section>
 		</main>

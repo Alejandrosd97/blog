@@ -1,5 +1,7 @@
 ---
 title: 'Otros'
+id : 2
+
 description: 'Explicación de AWS Command Line Interface'
 pubDate: 'Jul 01 2023'
 heroImage: '/blog-placeholder-1.jpg'

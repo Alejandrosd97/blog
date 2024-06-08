@@ -5,6 +5,7 @@ const developer = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
+		id :z.number(),
 		description: z.string(),
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
@@ -18,6 +19,7 @@ const architect = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
+		id :z.number(),
 		description: z.string(),
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
@@ -31,6 +33,7 @@ const compute = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
+		id :z.number(),
 		description: z.string(),
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
@@ -44,6 +47,7 @@ const linux = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
+		id :z.number(),
 		description: z.string(),
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
@@ -58,6 +62,7 @@ const os = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
+		id :z.number(),
 		description: z.string(),
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
@@ -70,6 +75,7 @@ const programación = defineCollection({
 	type: 'content',
 	// Type-check frontmatter using a schema
 	schema: z.object({
+		id :z.number(),
 		title: z.string(),
 		description: z.string(),
 		// Transform string to Date object

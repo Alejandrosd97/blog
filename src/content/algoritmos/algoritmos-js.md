@@ -1,5 +1,6 @@
 ---
 title: 'Algoritmos javascript'
+id: 2
 description: 'Explicación Serverless computing'
 pubDate: 'Jul 01 2023'
 heroImage: '/blog-placeholder-1.jpg'
@@ -20,6 +21,27 @@ Algunos ejemplos de funciones que usan recursión son json.parse() y json.string
 ##### ALGORITMOS DE BÚSQUEDA
 ###### BÚSQUEDA LINEAL
 En un array, la forma más rápida de buscar un valor, es recorrer todos los elementos del array hasta encontrarlo. Tiene un Big O(n). Javascript ya trae funcionalidad incorporada para ello, por ejemplo el método indexOf(), que devuelve la posición de un elemento en un array o -1 si no se encuentra presente. El método include() determina si un array incluye un determinado valor entre sus entradas, devolviendo verdadero o falso según corresponda. El método find() devuelve el primer elemento de un array que satisface la función de prueba proporcionada. Si ningún valor satisface la función de prueba, se devuelve undefined.
+
+```
+const a1 = [10, 15, 20, 25, 30]
+const a2 = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+const a3 = [1,2,3,4,5]
+
+
+function linearSearch(arr, val){
+    let index = -1
+    for ( const [i, v] of arr.entries()){
+        if (val === v){
+            index = i 
+        }
+    }
+    return index
+}
+
+console.log(linearSearch(a1, 15))
+```
+
+<!-- ![código de busqueda lineal](/../imgs/linear-search.png) -->
 
 ###### BÚSQUEDA BINARIA
 En vez de eliminar un posible valor en cada paso, se eliminan la mitad, pero con una condición necesaria, y esa es que los elementos deben estar en orden, ya sea alfabético, numérico, etc. Se empieza la búsqueda por el elemento situado en la mitad, y se compara con el valor de búsqueda. Si el elemento de búsqueda es mayor (suponiendo que el orden es ascendente), se pueden eliminar de la búsqueda todos los valores inferiores, de manera que solo quedan la mitad de los valores por buscar. En esos valores restantes se repite la misma operación y se elimina la mitad, por lo que quedará un cuarto de los valores que había al inicio. Este proceso se repite hasta dar con el elemento deseado. En es te caso la notación Big O es O(log n).

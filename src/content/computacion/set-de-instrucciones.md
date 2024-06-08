@@ -1,5 +1,6 @@
 ---
 title: 'Set de instrucciones'
+id: 5
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 heroImage: '/instructions.svg'

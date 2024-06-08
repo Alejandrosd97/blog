@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../../layouts/BlogPost.astro';
+import LinkAnterior from '../../../components/LinkAnterior';
+import LinkPosterior from '../../../components/LinkPosterior';
 
 
 export async function getStaticPaths() {
@@ -11,12 +13,26 @@ export async function getStaticPaths() {
 	}));
 }
 
+const post = Astro.props;
+
+
+const todos = await getCollection('computacion')
+const siguiente = todos.filter((p)=>{
+ 	return p.data.id === (post.data.id +1)
+})
+
+const anterior = todos.filter((p)=>{
+ 	return p.data.id === (post.data.id -1)
+})
+
 type Props = CollectionEntry<'computacion'>;
 
-const post = Astro.props;
 const { Content } = await post.render();
 ---
 
 <BlogPost {...post.data}>
 	<Content />
 </BlogPost>
+
+<LinkAnterior postAnterior={anterior[0]} certificacion={'computacion'}/>
+<LinkPosterior postSiguiente={siguiente[0]} certificacion={'computacion'}/>

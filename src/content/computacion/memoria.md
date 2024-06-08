@@ -1,5 +1,6 @@
 ---
 title: 'Memoria'
+id: 4
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 heroImage: '/ram.svg'

@@ -4,9 +4,8 @@ import BlogPost from '../../../layouts/BlogPost.astro';
 import LinkAnterior from '../../../components/LinkAnterior';
 import LinkPosterior from '../../../components/LinkPosterior';
 
-
 export async function getStaticPaths() {
-	const posts = await getCollection('computacion');
+	const posts = await getCollection('web');
 	return posts.map((post) => ({
 		params: { slug: post.slug },
 		props: post,
@@ -15,8 +14,7 @@ export async function getStaticPaths() {
 
 const post = Astro.props;
 
-
-const todos = await getCollection('computacion')
+const todos = await getCollection('web')
 const siguiente = todos.filter((p)=>{
  	return p.data.id === (post.data.id +1)
 })
@@ -25,7 +23,8 @@ const anterior = todos.filter((p)=>{
  	return p.data.id === (post.data.id -1)
 })
 
-type Props = CollectionEntry<'computacion'>;
+
+type Props = CollectionEntry<'web'>;
 
 const { Content } = await post.render();
 ---
@@ -34,5 +33,5 @@ const { Content } = await post.render();
 	<Content />
 </BlogPost>
 
-<LinkAnterior postAnterior={anterior[0]} certificacion={'hardware'}/>
-<LinkPosterior postSiguiente={siguiente[0]} certificacion={'hardware'}/>
+<LinkAnterior postAnterior={anterior[0]} certificacion={'desarrollo-web'}/>
+<LinkPosterior postSiguiente={siguiente[0]} certificacion={'desarrollo-web'}/>

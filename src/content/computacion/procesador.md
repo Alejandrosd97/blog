@@ -61,4 +61,49 @@ Cada una de las operaciones realizadas durante la ejecución de una instrucción
 -Transferencia externa: Operaciones de transferencia entre registros internos y externos del procesador, o entre registros internos y módulos externos del procesador, como el bus o la RAM. Un ejemplo sería cargar el contenido de registro de status de un dispositivo de I/O a un registro del procesador.
 
 
+###### LECTURA DE  AL INSTRUCCIÓN
+El primer paso es la lectura de la instrucción, que consta básicamente de cuatro subpasos:
+1) MAR ← PC: El contenido del registro del PC se almacena en el registro MAR.
+2) MBR ← Memoria: Se lee la instrucción.
+3) PC ← PC + Δ: el PC aumenta en el número de posiciones de memoria leídas (Δ posiciones).
+4) IR ← MBR: la instrucción se carga en el registro IR.
+
+
+###### LECTURA DE LOS OPERANDOS
+En el paso de la lectura de los operandos, el número de subpasos a seguir en este paso depende del número de operandos de origen y los modos de direccionamiento utilizados en cada operando. Si hay
+más de un operando, se debe repetir el proceso para cada uno de ellos.
+
+La mayoría de los conjuntos de instrucciones no permiten especificar dos operandos fuente en memoria, ya que los datos obtenidos quedan en el MBR. Por lo tanto, si se especificaran dos operandos de memoria, el primero debería almacenarse temporalmente en otro registro, lo que provocaría un retraso considerable en la ejecución de la instrucción.
+
+###### EJECUCIÓN DE LA INSTRUCCIÓN
+Para ejecutar algunas instrucciones, es necesaria la ALU. Para operar con ella, todos los
+los operandos que utiliza tienen que estar disponibles al mismo tiempo, pero la ALU no
+tiene elementos para almacenarpor lo tanto, deben ser guradados en los registros del
+procesador. Si los operandos fuente están en registros disponibles para la ALU, el microoperador
+La opción para realizar el paso de ejecución es la siguiente:
+
+Registro de destino ← Registro de origen <operación> Registro de origen o Valor
+
+Si el operando de destino no es un registro, el modo de direccionamiento debe ser primero
+resolvió almacenar los datos, de forma muy similar a leer el operando fuente.
+
+###### COMPROBACIÓN DE INTERRUPCIONES
+En este paso, si no se ha producido ninguna solicitud de interrupción, no es necesario ejecutar ninguna microoperación y se realiza la ejecución de la siguiente instrucción; de lo contrario, se debe realizar un cambio de contexto. Para realizar un cambio de contexto, el estado del procesador debe almacenarse (generalmente en el stack del sistema) y colocarse en el PC la dirección de rutina que sirve esta interrupción.
+
+
+##### SEÑALES DE CONTROL
+Cada microoperación realiza una determinada tarea dentro del ciclo de ejecución de una instrucción. A pesar de la sencillez de estas microoperaciones, su realización implica la activación de un conjunto de señales de control. En general, se entiende por señal de control una línea física que sale de la unidad de control y se dirige a uno o más dispositivos del ordenador, y lleva una señal eléctrica que representa un valor lógico 0 o 1. Dependiendo de los dispositivos a los que está conectado, se activa por flanco o por nivel activo.
+
+La mayoría de los ordenadores funcionan de manera síncrona, es decir, la secuencia de operaciones es gobernada por una señal de reloj. El período de esta señal de reloj (es decir, el tiempo que tarda en hacer una oscilación completa), también llamado ciclo de reloj, determina el mínimo tiempo necesario para realizar una operación elemental en el ordenador. Se puede considerar que esta operación elemental es una microoperación.
+
+Un subpaso de ejecución es el conjunto de microoperaciones que se pueden ejecutar simultáneamente en un ciclo de reloj. El número de subpasos de ejecución que se realizan durante cada paso puede ser diferente.
+
+Dividir el ciclo de ejecución en pasos y subpasos permite el funcionamiento sistemático de la unidad de control y simplifica su diseño. 
+
+Para optimizar el tiempo de ejecución de cada paso, es necesario intentar ejecutar simultáneamente dos o más microoperaciones en un mismo subpaso de ejecución. La ejecución de microoperaciones implica el uso de ciertos recursos informáticos y que estas microoperaciones se ejecutan durante un tiempo determinado, normalmente un ciclo de reloj. Para garantizar que se puedan ejecutar dos o más microoperaciones al mismo tiempo, se debe considerar qué recursos se utilizan y durante cuántos ciclos de reloj. La agrupación de microoperaciones debe seguir básicamente dos reglas:
+
+1) Tiene que seguir la secuencia correcta de eventos. No se puede ejecutar un microoperación que genera u obtiene datos al mismo tiempo que otro microoperación que utiliza es ainformación.
+
+2) Deben evitarse los conflictos. El mismo recurso no puede ser utilizado por dos microoperaciones diferentes. Por ejemplo, no se puede utilizar el mismo bus para transferir dos datos o direcciones diferentes al mismo tiempo.
+
 

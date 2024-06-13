@@ -106,4 +106,7 @@ Para optimizar el tiempo de ejecución de cada paso, es necesario intentar ejecu
 
 2) Deben evitarse los conflictos. El mismo recurso no puede ser utilizado por dos microoperaciones diferentes. Por ejemplo, no se puede utilizar el mismo bus para transferir dos datos o direcciones diferentes al mismo tiempo.
 
+Existen dos implementaciones de la unidad de control, unidad de control cableada y unidad de control microprogramada.
+
+###### UNIDAD DE CONTROL CABLEADA
 

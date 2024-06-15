@@ -109,4 +109,35 @@ Para optimizar el tiempo de ejecución de cada paso, es necesario intentar ejecu
 Existen dos implementaciones de la unidad de control, unidad de control cableada y unidad de control microprogramada.
 
 ###### UNIDAD DE CONTROL CABLEADA
+La unidad de control cableada es, básicamente, un circuito combinacional que recibe un conjunto de señales de entrada y las transforma en un conjunto de señales de salida que son las señales de control. Las señales de control para cada instrucción están cableadas a la unidad de control, por lo que la unidad de control tiene un circuito dedicado para cada instrucción posible. Las unidades de control cableadas son simples y rápidas, pero pueden ser inflexibles y difíciles de modificar. Esta técnica se utiliza normalmente en máquinas RISC.
 
+
+1) Descodificador de instrucciones: Su función básica es decodificar la instrucción. Obtiene la información del registro IR y proporciona una salida diferente para cada instrucción de la máquina, y también se encarga de suministrar los valores inmediatos (especificados en la propia instrucción) al bus interno del procesador para trabajar con estos valores.
+
+2) Control de estado: Se encarga de contar los subpasos dentro de cada paso de ciclo de ejecución de instrucciones. Recibe la señal del reloj y las señales del control de la lógica necesarias para controlar los pasos del ciclo de ejecución, y genera una señal diferente para cada subpaso dentro de cada paso del ciclo de ejecución y las señales para identificar el paso dentro del ciclo de ejecución.
+
+3) Control de lógica: Es un circuito combinacional que realiza las operaciones lógicas necesarias para obtener las señales de control correspondientes a una microoperación. Recibe las señales de los otros dos módulos de la unidad de control cableado y del registro de status, y luego proporciona información del resultado de esta microoperación al módulo que realiza el control de estado.
+
+Este circuito se puede implementar mediante dos niveles de puertas lógicas, pero debido a diferentes limitaciones de los circuitos lógicos se realiza utilizando más niveles.
+Sin embargo, sigue siendo muy rápido.
+
+###### UNIDAD DE CONTROL MICROPROGRAMADA
+En este caso se utiliza un microcódigo para ejecutar instrucciones. El microcódigo es un conjunto de instrucciones que se pueden modificar o actualizar, lo que permite una mayor flexibilidad y facilidad de modificación. Las señales de control para cada instrucción son generadas por un microprograma que se almacena en la memoria, en lugar de estar cableadas a la unidad de control.
+
+La unidad de control es responsable de dirigir el flujo de datos e instrucciones dentro de la CPU. La ejecución de una instrucción implica realizar una serie de microoperaciones, y cada microoperación implica la activación de un conjunto de señales de control, cada una de ellas representada por un bit.
+La representación del conjunto de todas las señales de control da lugar a lo que se llama palabra de control. Estas unidades de control funcionan de manera más lenta puesto que añaden el paso extra de tener que decodificar el microcódigo para generar las señales de control. Son muy usadas en ordenadores modernos que utulizan arquitectura CISC.
+
+Una palabra de control es una palabra cuyos bits individuales representan varias señales de control. Una palabra de control determina todas las señales de control generadas por la unidad de control, ya que se utilizan tanto para indicar qué recursos se utilizan como para garantizar que el resto de los recursos no interfieran con la ejecución de las microoperaciones en curso. Si se pueden ejecutar dos o más microoperaciones en el mismo período, las señales de control necesarias se pueden activar en la misma palabra de control.
+
+Esta metodología se basa en el uso de una memoria de control que almacena la microoperaciones necesarias para ejecutar cada una de las instrucciones y el concepto de microinstrucción. Una microinstrucción es la notación utilizada para describir el conjunto de microoperaciones que se realizan simultáneamente en un mismo periodo y están representados por una palabra de control. Cada microinstrucción se almacena en una memoria de control, y por tanto, cada una tiene asignada una dirección de memoria diferente.
+
+Según el tipo de Palabra de Control almacenada en la Memoria de Control (CM), se clasifica en dos tipos:
+
+- Unidad de Control Microprogramada Horizontal: Las señales de control se representan en formato binario decodificado que es 1 bit por cada señal de control. Admite palabras de control más largas y se utiliza en aplicaciones de procesamiento paralelo. Además, no requiere hardware adicional (decodificadores), lo cual significa que es más rápido que el microprogramado vertical.
+
+- Unidad de Control Microprogramada Vertical: Para reducir el tamaño de las microinstrucciones horizontales, los bits de la palabra de control se codifican, de modo que el número de
+los bits necesarios se reducen. Para N señales de control, se requieren bits Log2(N). Admite palabras de control más cortas y requiere hardware adicional (decodificadores) para generar señales de control, lo que implica que es más lento que el microprogramado horizontal. Es menos flexible que el horizontal pero más flexible que el de una unidad de control cableada.
+
+
+
+##### CISC VS RISC

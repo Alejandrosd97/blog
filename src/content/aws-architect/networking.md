@@ -9,7 +9,7 @@ heroImage: '/blog-placeholder-1.jpg'
 
 ##### VPC
 
-Una VPC (Virtual Private Server) es una parte de la nube de AWS donde los usuarios pueden definir su propia network lógica, con control total sobre ella, pudiendo manejar el rango de IPs, las subnets, tablas de rutas e intenet gateways. Un ejemplo de arquitectura típica suele constar de tres capas:
+Una VPC (Virtual Private Cloud) es una parte de la nube de AWS donde los usuarios pueden definir su propia network lógica, con control total sobre ella, pudiendo manejar el rango de IPs, las subnets, tablas de rutas e intenet gateways. Un ejemplo de arquitectura típica suele constar de tres capas:
 - Web: Localizada en una subnet pública que puede ser accedida por los usuarios
 - Application: En una subnet privada, que solo puede contactar con la capa web y la base de datos
 - Database: En una subnet privada, solo puede ser accedida por la capa application

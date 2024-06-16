@@ -13,7 +13,7 @@ cached.
 
 Otro concepto básico importante son los modelos de consistencia. Existen dos, conocidos por los acrónimos ACID y BASE:
 - ACID: A de atomic, esto significa que las transacciones son de todo o nada, u ocurren o no ocurren, pero no quedan a medias. C de consistencia, las transacciones deben ser válidas. I de aislamiento (isolated), las transacciones no se mezclan unas con otras. D de duradero, la transacción completada debe permanecer.
--BASE: BA de disponibilidad báscia (basic availability), los valores están disponible incluso si son obsoletos. S de soft-state, puede no ser consistente de manera instanténea entre almacenamientos. E de consistencia eventual,se alcanzará la consistencia en algún momento. El motivo por el que se podría optar por este modelo, a pesar de su inconsistencia es que escala mejor que los modelos ACID.
+- BASE: BA de disponibilidad básica (basic availability), los valores están disponible incluso si son obsoletos. S de soft-state, puede no ser consistente de manera instanténea entre almacenamientos. E de consistencia eventual,se alcanzará la consistencia en algún momento. El motivo por el que se podría optar por este modelo, a pesar de su inconsistencia es que escala mejor que los modelos ACID.
 
 Otros conceptos que se suelen confundir son IOPS y throughput. IOPS significa Input Output Por Segundo y mide la velocidad de operaciones de lectura y escritura en un dispositivo. Throughput, por su parte, hace referencia a la cantidad de información que puede ser movida en una sola operación.
 

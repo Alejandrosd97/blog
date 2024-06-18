@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BlogPost from '../../../layouts/BlogPost.astro';
+import LinkAnterior from '../../../components/LinkAnterior';
+import LinkPosterior from '../../../components/LinkPosterior';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('react');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+const post = Astro.props;
+ 
+
+const todos = await getCollection('programacion-c')
+const siguiente = todos.filter((p)=>{
+ 	return p.data.id === (post.data.id +1)
+})
+
+const anterior = todos.filter((p)=>{
+ 	return p.data.id === (post.data.id -1)
+})
+
+console.log(todos[0])
+console.log(siguiente)
+console.log(anterior)
+
+type Props = CollectionEntry<'programacion-c'>;
+
+const { Content } = await post.render();
+---
+
+<BlogPost {...post.data}>
+	<Content />
+</BlogPost>
+
+<LinkAnterior postAnterior={anterior[0]} certificacion={'react'}/>
+<LinkPosterior postSiguiente={siguiente[0]} certificacion={'react'}/>

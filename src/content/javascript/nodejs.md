@@ -20,7 +20,7 @@ Cuando se inicia Node.js, inicializa el bucle de eventos, procesa el script de e
 
 Cuando se completa una tarea asíncrona en libuv, el eventi loop espera a que el call stack esté vacío para pasar el callback al callstack. El flujo de ejecución normal no se detiene para ejecutar una función de callback. Los callbacks de setTimeOut y setInterval tienen prioridad auqneu tampoco interrumpen el flujo de ejecución normal.
 
-###### INICIO
+##### INICIO
 Para iniciar un proyecto con node se ejecuta el comando npm init dentro de la carpeta de destino. Esto crea el archivo package.json presente en todos los paquetes de node y que muestra información sobre dicho paquete. Un apartado muy importante del archivo package.json es el de scripts que permite establecer comandos que van permitir ejecutar diferentes acciones. Por ejemplo, se puede crear un script llamado start, que ejecuta el comando “node src/app.js”, app.js sería en este caso el archivo de entrada, y ahora se puede ejecutar con el comando npm run start o en el caso de start, al ser un script especial, solo npm start.
 
 Para no tener que ejecutar npm start cada vez que se haga algún cambio, se puede usar nodemon, que recarga la aplicación cada vez que detecta un cambio. Nodemon se debe instalar como una dependencia de desarrollo con la flag -D, pues no está hecho para ser usado en producción. Normalmente todos los proyectos traen un script start para iniciar el proyecto en producción, un script dev para desarrollo, un script test y un script build.
@@ -36,3 +36,31 @@ Para trabajar con archivos, node proporciona el paquete fs. Contiene algunos mé
 El principio de responsabilidad única indica que cada archivo debe hacer solo una cosa y debe hacerla bien. Cuando se usa la función require para importar un archivo de javascript no es necesario incluir la extensión .js. Al importar el archivo, si éste contiene código se va a ejecutar. Si en el archivo importado hay definidas variables o funciones, no se van a poder ejecutar en el archivo que lo importa. Esto es debido a que cada archivo es un módulo encapsulado, por lo que para acceder a su contenido es necesario exportarlo. La forma tradicional de exportar es “module.exports = {}”, dentro del objeto se indica todo lo que se desea exportar. Todo aquello que contenga un archivo que no sea exportado es privado de ese archivo.
 
 Un aspecto importante a destacar es que, al usar typescript  se utiliza import en lugar de require porque no se está utilizando Node en su forma original, sino que se usa Node con TypeScript. TypeScript permite utilizar las características más recientes de ECMAScript, incluyendo la sintaxis import. De esta manera, aunque require es la forma tradicional de importar módulos en Node, al inicializar TypeScript, es posible usar import para una sintaxis más moderna.
+
+##### MÓDULO HTTP
+Node.js tiene un módulo incorporado llamado HTTP, que A permite a Node.js transferir datos a través del Protocolo de transferencia de hipertexto (HTTP), es decir ofrece la funcionalidad de un servidor HTTP. Para crear un servidor se usa la función createServer(), y se le pasa un callback que será el código a ejecutar cuando alguien realice una petición. El método write() constituye el cuerpo de la respuesta
+
+```
+import {createServer} from "node:http";
+
+//create a server
+createServer(function (req, res) {
+  res.write('¡Hola mundo!'); //write a response to the client
+  res.end(); //end the response
+}).listen(5000); //the server object listens on port 8080 
+
+```
+
+Se pueden añadir headers a la respuesta mediante el método writeHead(), por ejemplo para servir archivos HTML:
+
+```
+import {createServer} from "node:http";
+
+//create a server
+createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('¡Hola mundo!'); //write a response to the client
+    res.end(); //end the response
+}).listen(5000); //the server object listens on port 8080 
+
+```

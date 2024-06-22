@@ -38,7 +38,7 @@ El principio de responsabilidad única indica que cada archivo debe hacer solo u
 Un aspecto importante a destacar es que, al usar typescript  se utiliza import en lugar de require porque no se está utilizando Node en su forma original, sino que se usa Node con TypeScript. TypeScript permite utilizar las características más recientes de ECMAScript, incluyendo la sintaxis import. De esta manera, aunque require es la forma tradicional de importar módulos en Node, al inicializar TypeScript, es posible usar import para una sintaxis más moderna.
 
 ##### MÓDULO HTTP
-Node.js tiene un módulo incorporado llamado HTTP, que A permite a Node.js transferir datos a través del Protocolo de transferencia de hipertexto (HTTP), es decir ofrece la funcionalidad de un servidor HTTP. Para crear un servidor se usa la función createServer(), y se le pasa un callback que será el código a ejecutar cuando alguien realice una petición. El método write() constituye el cuerpo de la respuesta
+Node.js tiene un módulo incorporado llamado HTTP, que permite a Node.js transferir datos a través del Protocolo de transferencia de hipertexto (HTTP), es decir ofrece la funcionalidad de un servidor HTTP. Para crear un servidor se usa la función createServer(), y se le pasa un callback que será el código a ejecutar cuando alguien realice una petición. El método write() constituye el cuerpo de la respuesta
 
 ```
 import {createServer} from "node:http";

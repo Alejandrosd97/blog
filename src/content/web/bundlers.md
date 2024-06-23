@@ -1,5 +1,5 @@
 ---
-title: 'CSR vs SSG vs SSR'
+title: 'Bundlers'
 id: 2
 description: 'Explicación Serverless computing'
 pubDate: 'Jul 01 2023'
@@ -20,3 +20,7 @@ a partir de aquí, el bundler recorre las dependencias, rastrea más dependencia
 
 ###### BUNDLING
 Una vez que el bundler obtiene todas las entradas necesarias y clasifica sus dependencias anterior, comienza la etapa de packing. Esta etapa consiste en preparar los activos que el navegador puede manejar sin problemas. En este paso, el bundler utiliza el gráfico de dependencia para combinar todos los archivos de código, conectar las funciones necesarias y el objeto module.exports, y crear un paquete limpio y ordenado que el navegador cargará fácilmente.
+
+##### VITE
+Vite es una herramienta de compilación que sirve para proporcionar una experiencia de desarrollo más rápida y sencilla. Consta de dos partes principales. En primer lugar, un servidor de desarrollo que proporciona numerosas mejoras de funciones con respecto a los módulos ES nativos, por ejemplo, reemplazo de módulo en caliente (HMR) muy rápido rápido. en segundo lugar, un comando build que agrupa el código con Rollup, preconfigurado para generar activos estáticos altamente optimizados para producción. Rollup, a su vez, es un bundler para JavaScript que compila pequeños fragmentos de código en algo más grande y complejo, como una biblioteca o una aplicación. Utiliza el nuevo formato estandarizado para módulos de código incluido en la revisión ES6 de JavaScript, en lugar de soluciones  anteriores como CommonJS y AMD.
+

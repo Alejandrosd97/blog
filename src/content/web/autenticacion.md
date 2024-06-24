@@ -23,5 +23,11 @@ En este caso al enviar las credendiales al servidor, si éstas son correctas, el
 
 Los JWT están basados en el Open Standard (RFC 7519) y no solo se usan para autenticación sino también para intercambio de cualquier tipo de información de manera segura. Este tipo de token consta de tres partes separadas por un punto, header, payload y firma. El header contiene metadatos sobre el tipo de token y los algoritmos criptográficos utilizados para proteger su contenido, el payload contiene la información, como la identidad del usuario y los permisos que tiene y la firma se utiliza para validar que el token es confiable y no ha sido manipulado. Cuando se usa un JWT, se debe verificar su firma antes de almacenarlo y usarlo. Para crear la firma, se toman el encabezado y la carga útil codificados en Base64, junto con un secreto, y se firman con el algoritmo especificado en el encabezado.
 
+##### SINGLE SIGN-ON
+Esta estrategia permite a los usuarios hacer login con un solo usuario y contraseña a múltiples servicos relacionados pero independientes los unos de los otros, por ejemplo los servicios de google, como Gmail o Youtube. De esta manera no es necesario introducir las credenciales para cada servicio.
 
-faltaaaaaaaaaaaaaaaaa
+La implementación suele consistir en la definición de un servicio central en el que se basan las aplicaciones cuando un usuario se conecta. En este enfoque, si un usuario no autenticado solicita una aplicación que requiere información de identidad, la aplicación en cuestión redirige al usuario al servicio central. En este servidor, el usuario se autentica y es redirigido a la aplicación original con la información de identidad. 
+
+Si ese mismo usuario pasa a otra aplicación que también requiere información de identidad y que depende del mismo servicio central para realizar la autenticación del usuario, la segunda aplicación puede aprovechar la sesión creada al iniciar la sesión en la primera aplicación.
+
+##### OAUTH

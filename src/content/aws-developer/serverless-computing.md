@@ -44,7 +44,7 @@ Proporciona una interfaz visual en la que poder construir una app serverless en 
 
 Tipos de workflows:
 - Standard: At-most-once-model, significa que cada paso solo se ejecuta una vez a menos que lo especifiquemos explícitamente. El historial de ejecución está disponible durante 90 días despues de su ejecución. Útil para acciones no-idempotentes y worklows de larga duración (hasta un año)
-- Express: At-least-one, se ejecuta por lo menos una vez aunque pueden ser mas. Útil para acciones idempotentes, por ejemplo leer de una db. Puede ser síncrono o asíncrono. Útil para workflows cortos.
+- Express: At-least-once, se ejecuta por lo menos una vez aunque pueden ser mas. Útil para acciones idempotentes, por ejemplo leer de una db. Puede ser síncrono o asíncrono. Útil para workflows cortos.
 
 Una petición es no-idempotente si siempre causa un cambio de estado, por ejemplo, enviar el mismo email muchas veces cambia el estado del mailbox. Idempotente es cuando otra petición exactamente igual no genera efectos adversos. 
 

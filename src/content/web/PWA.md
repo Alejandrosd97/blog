@@ -1,5 +1,5 @@
 ---
-title: 'Autenticación'
+title: 'PWA'
 id: 2
 description: 'Explicación Serverless computing'
 pubDate: 'Jul 01 2023'

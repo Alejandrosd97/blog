@@ -24,7 +24,7 @@ Un proxy es un agente o sustituto autorizado para actuar en nombre de otra perso
 
 Un proxy se situa como middleman entre una red privada e internet. Un forward proxy es aquel que regula el trafico que sale de la red privada, además de bloquear el tráfico malicioso hacia la red privada, también enmascara las direcciones ip cuando se hacen peticiones a internet, de manera que solo la ip del proxy es visible. Otra ventaja es que mejora el rendimiento, ya que crea copias de los archivos y páginas más accedidos en caché. Un reverse proxy funciona de la manera inversa, es decir, regula el tráfico entrante a la red privada creando un único punto de entrada. Sirve como protección para ataques DDoS y para repartir el tráfico entre los servidores.
 
-##### FIREWALL
+##### FIREWALLS
 Un cortafuegos es un dispositivo de seguridad de red que monitorea y filtra el tráfico de red entrante y saliente en función de las políticas de seguridad previamente establecidas. En términos simples, un firewall es esencialmente la barrera que se encuentra entre una red interna privada e internet. El objetivo principal de un firewall es permitir la entrada de tráfico no amenazante y mantener alejado el tráfico peligroso. Los firewalls crean “cuellos de botella” para canalizar el tráfico web. En esos puntos, se realiza una revisión según un conjunto de parámetros programados y se actúa en consecuencia. Algunos firewalls también realizan un seguimiento del tráfico y las conexiones en los registros de auditoría para consultar lo que se ha permitido o bloqueado. Normalmente, los firewalls se utilizan para delimitar las fronteras de una red privada o sus dispositivos host
 
 Los filtros de capa de red inspeccionan los paquetes en un nivel bajo de la pila de protocolos TCP/IP, no permitiendo que los paquetes pasen a través del firewall a menos que coincidan con el conjunto de reglas establecido donde el origen y el destino del conjunto de reglas se basan en el Protocolo de direccioens IP y puertos. Estos firewalls funcionan mejor que los que realizan inspección de la capa de aplicación. La desventaja es que las aplicaciones no deseadas o el malware pueden pasar por los puertos permitidos.
@@ -33,13 +33,40 @@ Los filtros de capa de red inspeccionan los paquetes en un nivel bajo de la pila
 
 - Los firewalls de host o “firewalls de software” requieren el uso de firewalls en dispositivos individuales y otros puntos de conexión de red privados como barreras entre los dispositivos dentro de la red. Estos dispositivos, reciben una regulación adaptada del tráfico desde y hacia aplicaciones del ordenador específicas. Los firewalls de host pueden acceder de manera más profunda al tráfico web, el filtrado basado en HTTP y otros protocolos de red, lo que permite administrar el contenido que recibe el equipo, en lugar de solo saber de dónde viene.
 
-Los firewalls también realizan funciones básicas a nivel de red, como traducción de direcciones de red (NAT) y red privada virtual (VPN). La traducción de direcciones de red oculta o traduce direcciones IP internas de clientes o servidores que pueden estar en un "rango de direcciones privadas" a una dirección IP pública. Ocultar las direcciones de los dispositivos protegidos preserva la cantidad limitada de direcciones IPv4 y es una defensa contra el reconocimiento de la red, ya que la dirección IP está oculta en Internet.
+Los firewalls también realizan funciones básicas a nivel de red, como [traducción de direcciones de red (NAT)](/blog/web/redes) y red privada virtual (VPN). La traducción de direcciones de red oculta o traduce direcciones IP internas de clientes o servidores que pueden estar en un "rango de direcciones privadas" a una dirección IP pública. Ocultar las direcciones de los dispositivos protegidos preserva la cantidad limitada de direcciones IPv4 y es una defensa contra el reconocimiento de la red, ya que la dirección IP está oculta en Internet.
 
 De manera similar, una red privada virtual (VPN) extiende una red privada a través de una red pública dentro de un túnel que a menudo está cifrado donde el contenido de los paquetes está protegido mientras atraviesa Internet. Esto permite a los usuarios enviar y recibir datos de forma segura a través de redes públicas o compartidas.
 
 ##### LOAD BALANCING
 Un load balancer es una solución que actúa como proxy de tráfico y distribuye el tráfico de red o de aplicaciones entre varios servidores. Los balanceadores de carga se utilizan para distribuir la capacidad durante las horas pico de tráfico y para aumentar la confiabilidad de las aplicaciones. 
 
+Un equilibrador de carga puede estar basado en hardware o en software. Los de hardware requieren la instalación de un dispositivo dedicado. Los basados ​​en software pueden ejecutarse en un servidor, en una máquina virtual o en la nube. Los CDN suelen incluir funciones de equilibrio de carga.
+
 Un equilibrador de carga es el dispositivo o servicio que se ubica entre el usuario y el grupo de servidores y actúa como un facilitador invisible, asegurando que todos los servidores se utilicen por igual. En algunos casos, no obstante, es esencial que todas las solicitudes de un cliente se envíen al mismo servidor durante la duración de una sesión, por ejemplo en un carrito de la compra. Estos se conoce como persistencia de sesión. Sin persistencia de la sesión, la información debe sincronizarse entre servidores, generando ineficiencias en el rendimiento.
 
 Además contribuye a la mejora de la seguridad previniendo ataques como DDoS, ya que distribuir el tráfico entre múltiples backend, ayuda a minimizar la superficie de ataque y hace que sea más difícil agotar los recursos y saturar los enlaces. Los balanceadores de carga también pueden redirigir el tráfico a otros sistemas si un sistema es vulnerable o está comprometido.
+
+Hay dos tipos de algoritmos de equilibrio de carga en términos de cómo operan: estáticos y dinámicos. 
+
+###### LOAD BALANCERS ESTÁTICOS
+Distribuyen las cargas de trabajo sin tener en cuenta el estado actual del sistema. No se dará cuenta de qué servidores funcionan con lentitud y cuáles no se utilizan lo suficiente. En cambio, asigna cargas de trabajo según un plan predeterminado. El equilibrio de carga estático se configura rápidamente, pero puede generar ineficiencias. 
+
+Los load balancers estáticos se utilizan para alojar un sitio web con contenido en gran medida estático porque las necesidades de tráfico son predecibles y consistentes. Se pueden utilizar varios servidores web idénticos a través de los cuales distribuir el tráfico. 
+
+
+###### LOAD BALANCERS DINÁMICOS
+Los algoritmos de equilibrio de carga dinámico tienen en cuenta la disponibilidad actual, la carga de trabajo y el estado de cada servidor. Pueden desviar el tráfico de servidores sobrecargados o de bajo rendimiento a servidores infrautilizados, manteniendo la distribución uniforme y eficiente. Sin embargo, el equilibrio de carga dinámico es más difícil de configurar. Se usan cuando una empresa experimenta aumentos repentinos y caídas en el tráfico. Algunas son predecibles y otras no. 
+
+Los equilibradores de carga dinámicos monitorean los servidores realizando comprobaciones periódicas del estado del servidor. Si un servidor o grupo de servidores funciona con lentitud, el equilibrador de carga le distribuye menos tráfico. Si falla por completo, el equilibrador de carga redirige el tráfico a otro grupo de servidores, un proceso conocido como "failover". Es importante que el failover se realice rápidamente para evitar una interrupción en el servicio.
+
+##### CACHING SERVER
+El almacenamiento en caché es el proceso de almacenar copias de archivos en un caché o ubicación de almacenamiento temporal, para que se pueda acceder a ellos más rápidamente. 
+
+Cada vez que un usuario carga una página web, los navegadores almacenan en caché la mayor parte del contenido que aparece en la página, guardando una copia del contenido en el disco duro del dispositivo. De esta manera, la próxima vez que el usuario cargue la página, la mayor parte del contenido ya estará almacenado localmente y la página se cargará mucho más rápido. Los navegadores almacenan estos archivos hasta que expire su tiempo de vida (TTL) o hasta que la memoria caché del disco duro esté llena.
+
+###### DNS
+Una CDN almacena en caché el contenido en servidores proxy que se encuentran más cerca de los usuarios finales que los servidores de origen, de esta manera, un CDN puede entregar el contenido más rápidamente.
+
+Un "cache hit" se produce cuando un cliente realiza una solicitud de contenido al caché y el caché tiene ese contenido guardado. Se produce un "cache miss" cuando el caché no tiene el contenido solicitado. En el caso de una pérdida de caché, un servidor CDN pasará la solicitud al servidor de origen y luego almacenará en caché el contenido una vez que el servidor de origen responda, de modo que las solicitudes posteriores resulten en un acierto de caché.
+
+El TTL se almacena en un header de la respuesta HTTP y especifica durante cuánto tiempo se almacenará en caché el contenido. Cuando el TTL caduca, el caché elimina el contenido. Algunas CDN también purgarán archivos de la caché antes de tiempo si el contenido no se solicita durante un tiempo o si un cliente de CDN purga manualmente cierto contenido.

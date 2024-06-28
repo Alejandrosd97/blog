@@ -64,9 +64,16 @@ El almacenamiento en caché es el proceso de almacenar copias de archivos en un 
 
 Cada vez que un usuario carga una página web, los navegadores almacenan en caché la mayor parte del contenido que aparece en la página, guardando una copia del contenido en el disco duro del dispositivo. De esta manera, la próxima vez que el usuario cargue la página, la mayor parte del contenido ya estará almacenado localmente y la página se cargará mucho más rápido. Los navegadores almacenan estos archivos hasta que expire su tiempo de vida (TTL) o hasta que la memoria caché del disco duro esté llena.
 
-###### DNS
+###### CDN
 Una CDN almacena en caché el contenido en servidores proxy que se encuentran más cerca de los usuarios finales que los servidores de origen, de esta manera, un CDN puede entregar el contenido más rápidamente.
 
 Un "cache hit" se produce cuando un cliente realiza una solicitud de contenido al caché y el caché tiene ese contenido guardado. Se produce un "cache miss" cuando el caché no tiene el contenido solicitado. En el caso de una pérdida de caché, un servidor CDN pasará la solicitud al servidor de origen y luego almacenará en caché el contenido una vez que el servidor de origen responda, de modo que las solicitudes posteriores resulten en un acierto de caché.
 
 El TTL se almacena en un header de la respuesta HTTP y especifica durante cuánto tiempo se almacenará en caché el contenido. Cuando el TTL caduca, el caché elimina el contenido. Algunas CDN también purgarán archivos de la caché antes de tiempo si el contenido no se solicita durante un tiempo o si un cliente de CDN purga manualmente cierto contenido.
+
+##### CORS
+El intercambio de recursos entre orígenes (CORS) es un mecanismo basado en headers HTTP que permite a un servidor indicar cualquier origen distinto del suyo desde el cual un navegador debería permitir la carga de recursos. El estándar CORS funciona agregando nuevos encabezados HTTP que permiten a los servidores describir qué orígenes pueden leer esa información desde una navegación web.
+
+Por razones de seguridad, los navegadores restringen las solicitudes HTTP de origen cruzado iniciadas desde scripts. Por ejemplo, fetch() sigue la política del mismo origen. Esto significa que una aplicación web que utiliza esas API solo puede solicitar recursos del mismo origen desde el que se cargó la aplicación, a menos que la respuesta de otros orígenes incluya los headers CORS correctos.
+
+Los navegadores utilizan la poítica de cors CORS como parte de modelo de seguridad. Permite cargar recursos de su propia url pero bloquea la carga de recursos de otras URL salvo que se cumplan ciertas condiciones. Cuando el servidor hace una petición, añade un header llamado origin. Si esta petición va a un servidor en el mismo origen y devuelve un código 200. Si la petición se envía a otro servidor, entonces se considera como cross-origin request. Al enviar la respuesta, el servidor añade el header Access-Control-Allow-Origin, cuyo valor debe corresponderse con el de origin, o de lo contrario el navegador impedirá que el contenido de la respuesta sea compartido con el cliente

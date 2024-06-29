@@ -31,3 +31,9 @@ La implementación suele consistir en la definición de un servicio central en e
 Si ese mismo usuario pasa a otra aplicación que también requiere información de identidad y que depende del mismo servicio central para realizar la autenticación del usuario, la segunda aplicación puede aprovechar la sesión creada al iniciar la sesión en la primera aplicación.
 
 ##### OAUTH
+OAuth significa Autorización Abierta y funciona para autorizar dispositivos, API, servidores y aplicaciones utilizando tokens de acceso en lugar de credenciales de usuario, lo que se conoce como acceso delegado seguro.
+
+OAuth delega la autenticación a servicios como Facebook, Amazon, Twitter y autoriza a aplicaciones de terceros a acceder a la cuenta del usuario sin tener que ingresar su nombre de usuario y contraseña.
+
+Se utiliza principalmente para REST/API y solo proporciona un alcance limitado de los datos de un usuario.
+

@@ -73,3 +73,58 @@ bcrypt
   })
   .catch(err => console.error(err.message));
 ```
+
+
+
+##### SHA
+
+
+
+
+
+##### HASHING VS ENCRYPTION
+El cifrado es la práctica de codificar información de manera que sólo alguien con la clave correspondiente pueda descifrarla y leerla. El cifrado es una función bidireccional, de manera que cuando se cifra algo, se hace con la intención de descifrarlo más tarde.
+
+Para cifrar datos se utiliza algo llamado cifrado, que es un algoritmo para cifrar y descifrar información. El algoritmo también puede denominarse clave de cifrado. 
+
+Con la criptografía de clave pública, se utiliza una clave pública para cifrar y la otra clave privada para descifrar. Esto se ve durante el protocolo de enlace SSL, donde se utiliza la clave disponible públicamente para cifrar una clave de sesión simétrica y enviarla de regreso al servidor para descifrarla mediante su clave privada.
+
+- Cifrado asimétrico: Una clave cifra, la otra clave descifra. El cifrado sólo va en una dirección. Este es el concepto que forma la base de PKI (infraestructura de clave pública), que es el modelo que sustenta SSL/TLS.
+
+- Cifrado simétrico: Se acerca más a una forma de cifrado de clave privada. Cada parte tiene su propia clave que puede cifrar y descifrar. Después del cifrado asimétrico que se produce en el protocolo de enlace SSL, el navegador y el servidor se comunican utilizando la clave de sesión simétrica que se pasa entre ellos.
+
+Cuando está comprando un certificado SSL y ve "2048 bits", eso se refiere a la longitud de la clave privada, específicamente una clave privada RSA. Cuando se mencionan "256 bits", generalmente se refiere al tamaño de las claves de sesión simétricas que se utilizan durante la comunicación real. Eso no significa que el cifrado simétrico sea menos seguro. Una supercomputadora todavía necesitaría miles de años para descifrar el cifrado de 256 bits.
+
+La razón por la que se utiliza el cifrado simétrico de 256 bits para la comunicación es su mayor rapidez, lo cual repercute en un mejor rendimiento y menos gasto de computación para los servidores.
+
+
+Hashing, por otro lado, es la práctica de utilizar un algoritmo para asignar datos de cualquier tamaño a una longitud fija. Esto se llama valor hash. Mientras que el cifrado es una función bidireccional, el hash es una función unidireccional. Aunque es técnicamente posible aplicar hash inverso a algo, la potencia informática necesaria lo hace inviable. El hash es unidireccional y tiene como objetivo verificar que un archivo o dato no ha sido alterado, es decir, que es auténtico. 
+
+Cada algoritmo genera un hash con una longitud fija. Por ejemplo, el algoritmo SHA-256, genera un valor hash de 256 bits, generalmente representado por una cadena hexadecimal de 64 caracteres. Cada valor hash es único. Si dos archivos diferentes producen el mismo valor hash único, esto se denomina colisión y hace que el algoritmo sea inútil. 
+
+Un ejemplo de hash sería firmar digitalmente un software y ponerlo a disposición para ser descargado en una página web. Para esto, se crea un hash del ejecutable y luego, después de agregar su firma digital, también se hace hash. Después de esto, todo se cifra para que se pueda descargar.
+
+Cuando un cliente descarga el software, el navegador descifrará el archivo y luego inspeccionará los dos valores hash únicos. Luego, el navegador ejecutará la misma función hash, utilizando el mismo algoritmo, y volverá a aplicar hash tanto al archivo como a la firma. Si el navegador produce el mismo valor hash, entonces sabrá que tanto la firma como el archivo son auténticos y no han sido alterados.
+
+##### SSL/TLS
+###### TLS HANDSHAKE
+Los certificados SSL/TLS son necesarios para servir un sitio web a través de HTTPS. El handshake (o apretón de manos) es donde comienza cada conexión y donde se establecen los fundamentos técnicos de SSL/TLS y se lleva a cabo entre cliente y servidor.
+
+El propósito del handshake es realizar todo el trabajo criptográfico necesario para tener una conexión segura. Esto incluye autenticar el certificado SSL que se utiliza y generar una clave de cifrado.
+
+Los primeros pasos del handshake requieren que el cliente y el servidor compartan sus capacidades para que puedan encontrar las funciones criptográficas que admiten mutuamente (client hello y server hello). Cuando el cliente y el servidor ya han acordado los métodos de cifrado exactos que utilizarán, el servidor envía al cliente su certificado SSL. Una vez recibido, el cliente verifica que el certificado sea auténtico, ya que para tener una conexión verdaderamente segura, además de cifrar la información, también hay que asegurarse de que se envía al sitio web correcto. Los certificados SSL/TLS proporcionan esa autenticación. 
+
+Todos los certificados SSL confiables son emitidos por una Autoridad de Certificación (CA), que es una empresa aprobada para emitir certificados digitales. Estas organizaciones deben seguir pautas estrictas de emisión y validación para que los certificados que emiten sigan siendo fiables. Se puede ver como un notario, cuya firma significa que la entidad en el certificado es quien dice ser.
+
+El cliente verifica la firma digital y se asegura de que el certificado proviene de una CA confiable. Los certificados SSL contienen un par de claves que constan de una clave pública y una privada. El cifrado es efectivamente unidireccional. El cliente cifrará datos aleatorios con la clave pública del certificado que debe usarse para generar la clave de sesión. El servidor sólo podrá descifrar y utilizar esos datos si tiene la clave privada, comprobando así que está en posesión de esta y demostrando su identidad. En este momento el servidor envía un mnsaje server hello done para indicar que ya ha terminado de enviar todos los mensajes que tenía que enviar.
+
+La última parte del handshake TLS implica la creación de la clave de sesión, que es la clave que realmente se utilizará para una comunicación segura.
+
+Las claves de sesión son simétricas, lo que significa que se utiliza la misma clave para cifrar y descifrar. Estas claves pueden lograr un cifrado sólido de manera mucho más eficiente que las claves asimétricas, lo que las hace apropiadas para enviar datos en una conexión HTTPS. El método exacto para generar la clave puede variar, los dos esquemas más comunes son RSA y Diffie-Hellman.
+
+El handshake SSL es lo primero que debe suceder en una conexión HTTPS, incluso antes de que se cargue la página web. Una vez que completado el handshake, comienza la conexión HTTPS cifrada y autenticada y todos los datos que se envían y reciben entre cliente y servidor están protegidos.
+
+En versiones anteriores era necesario hacer dos viajes de ida y vuelta al servidor, pero con TLS 1.3 solo es necesario un viaje, haciendo que el proceso sea más rápido.
+
+BUSCAR CIPHER SUITES
+

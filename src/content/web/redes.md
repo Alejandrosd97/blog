@@ -6,6 +6,13 @@ pubDate: 'Jul 01 2023'
 heroImage: '/blog-placeholder-1.jpg'
 ---
 
+Las direcciones IP constan de dos partes: la dirección de red y la dirección de host. La dirección de red indica la red a la que pertenece un dispositivo, mientras que la dirección de host identifica el dispositivo específico dentro de esa red.
+
+Las máscaras de subred se utilizan para definir qué parte de una dirección IP es la dirección de red y cuál es la dirección del host. Por ejemplo, en la dirección IP 192.168.1.45 y la máscara de subred 255.255.255.0, la dirección de red es 192.168.1.0 y la dirección de host es 45.
+
+Los motivos de crear subredes son varios, entre ellos, mejorar la seguridad aislando las diferentes subredes impidiendo que se extiendan las amenazas, mayor facilidad de administración, al ser las subredes más pequeñas
+
+
 ##### NAT
 Significa Network Address Translation y se creó para paliar la escasez de direcciones Ipv4. Debido a sta escasez de direcciones, las redes de ordenadores utilizan un rango de direcciones especiales (IPs privadas) y se conecten a Internet usando una única dirección IP (IP pública). Un ejemplo sería como se conectan las redes domésticas a internet.
 

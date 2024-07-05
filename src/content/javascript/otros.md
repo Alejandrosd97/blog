@@ -45,8 +45,15 @@ Cuando se produce un evento, este se propaga desde el emisor (event.target) por 
 
 ##### MÓDULOS
 
-Para convertir un objeto en formato json string se utiliza el método JSON.stringify(). Para llevar a cabo el proceso contrario se usa ek método JSON.parse()
+Para convertir un objeto en formato json string se utiliza el método JSON.stringify(). Para llevar a cabo el proceso contrario se usa el método JSON.parse()
 
 Un problema de dependencia circular se da cuando dos módulos se importan el uno al otro
 
 
+
+
+
+
+
+##### VALOR vs RFERENCIA
+Para comparar si dos objetos diferentes tienen las mismas propiedades se puede usar la función JSON.stringify() sobre los objetos y comparar los strings.

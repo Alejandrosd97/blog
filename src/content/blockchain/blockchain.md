@@ -7,10 +7,16 @@ heroImage: '/blog-placeholder-1.jpg'
 ---
 
 ##### PROTOCOLOS DE CONSENSO
-Debido a que la propagación a travśe de la red tarda un timpo en producirse, es posible que dos nodos hayan minado un bloque a la cadena de bloques. En este caso se acepta como bloque a añadir  aquel que se haya difundido a más nodos ya que es esta cadena que tiene más potencia de cálculo. El otro bloque, que se había minado de manera correcta se convierte en un bloque huérfano. Los mineros no reciben recompensa por los bloques huérfanos. Estos bloques, a pesar de ser considerados como válidos, no se añaden a la blockchain principal sino que se almacenan en un sitio llamado pool de bloques huérfanos
+Un factor diferencial entre las distintas blockchains es el tipo de mecanismo de consenso que utiliza cada una. Un mecanismo de consenso es el proceso mediante el cual una red llega a un acuerdo sobre la información de la red, por ejemplo, si las transacciones son válidas y en qué orden ocurren. También desempeña un papel clave a la hora de proteger la red blockchain de ataques.
+
+Debido a que la propagación a travśe de la red tarda un timpo en producirse, es posible que dos nodos hayan minado un bloque a la cadena de bloques. En este caso se acepta como bloque a añadir  aquel que se haya difundido a más nodos ya que es esta cadena que tiene más potencia de cálculo. El otro bloque, que se había minado de manera correcta se convierte en un bloque huérfano. Los mineros no reciben recompensa por los bloques huérfanos. Estos bloques, a pesar de ser considerados como válidos, no se añaden a la blockchain principal sino que se almacenan en un sitio llamado pool de bloques huérfanos.
+
+Existen dos tipos principales de protocolos de consenso, Proof of work y Proof of stake.
 
 ##### PROOF OF WORK
-La prueba de trabajo es una forma de prueba criptográfica en la que una parte llamada probador demuestra a otras llamadas verificadores que se ha invertido una cierta cantidad de un esfuerzo computacional específico.
+Es uno de los más utilizados en blockchain y fue popularizado por primera vez por Bitcoin. La prueba de trabajo es una forma de prueba criptográfica en la que una parte llamada probador demuestra a otras llamadas verificadores que se ha invertido una cierta cantidad de un esfuerzo computacional específico.
+
+El minero que resuelve este rompecabezas criptográfico primero confirma el bloque de transacciones más reciente en la cadena de bloques. Luego, el minero exitoso transmite el nuevo bloque a todos los demás nodos, quienes a su vez confirman su precisión y agregan ese bloque a su copia de la cadena de bloques, creando un registro verificable de datos para toda la red. Este proceso de verificación representa consenso. Sólo una vez confirmados estos datos se podrá añadir un nuevo bloque a la red. Los mineros reciben la criptomoneda propia de la blockchain recién acuñada como recompensa por ser los primeros en validar un nuevo bloque de datos y agregarlo a la cadena de bloques PoW.
 
 El propósito de los algoritmos de prueba de trabajo no es probar que se llevó a cabo cierto trabajo o que se resolvió un rompecabezas computacional, sino disuadir la manipulación de datos estableciendo grandes requisitos de control de hardware y energía para poder hacerlo. 
 

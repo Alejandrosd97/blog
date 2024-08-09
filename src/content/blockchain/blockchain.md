@@ -72,3 +72,24 @@ Debido a que los smart contracts se guardan en los bloques, por lo que una vez d
 ETHEREUM VIRTUAL MACHINE
 
 
+##### BLOCKCHAIN ORACLES
+Los oráculos de blockchain son entidades que conectan blockchains con sistemas externos, permitiendo así la ejecución de contratos inteligentes basados ​​en inputs y outputs del mundo real. Cnectan cadenas de bloques que de otro modo estarían aisladas de datos y computación fuera de la cadena, y permiten la interoperabilidad entre cadenas de bloques.
+
+Los smart contracts no pueden interactuar inherentemente con datos y sistemas existentes fuera de su entorno blockchain nativo. Los recursos externos a la cadena de bloques se consideran "offchain", mientras que los datos ya almacenados en la cadena de bloques se consideran "onchain". Al estar deliberadamente aisladas de los sistemas externos, las cadenas de bloques obtienen sus propiedades más valiosas, como un fuerte consenso sobre la validez de las transacciones de los usuarios, la prevención de ataques de doble gasto y la mitigación del tiempo de inactividad de la red. Interoperar de forma segura con sistemas fuera de la cadena de bloques desde una cadena de bloques requiere una pieza adicional de infraestructura conocida como "oráculo" para unir los dos entornos.
+
+Los oráculos criptográficos amplían los tipos de acuerdos digitales que las cadenas de bloques pueden admitir al ofrecer una puerta de entrada universal a los recursos fuera de la cadena y al mismo tiempo mantener las ventajas de seguridad de las cadenas de bloques.
+
+Si los mecanismos de Oracle de blockchain utilizaran una entidad centralizada para entregar datos a un contrato inteligente introducirian un único punto de fallo, frustrando todo el propósito de una aplicación de blockchain descentralizada. Además, debido a que las transacciones de blockchain son automatizadas e inmutables, el resultado de un contrato inteligente basado en datos defectuosos no se puede revertir, lo que significa que los fondos de los usuarios pueden perderse permanentemente. Por lo tanto, los oráculos centralizados no son una buena solución para las aplicaciones de contratos inteligentes.
+
+Las redes de Oracle descentralizadas (DON) permiten la creación de contratos inteligentes híbridos, donde el código dentro de la cadena y la infraestructura fuera de la cadena se combinan para respaldar aplicaciones descentralizadas (dApps) que reaccionan a eventos del mundo real e interoperan con sistemas tradicionales.
+
+Una red Oracle descentralizada, o DON para abreviar, combina múltiples operadores de nodos Oracle independientes y múltiples fuentes de datos fiables para establecer una descentralización de un extremo a otro. Los DON permiten la creación de contratos inteligentes híbridos, donde el código onchain y la infraestructura fuera de la cadena se combinan para respaldar aplicaciones descentralizadas avanzadas (dApps) que reaccionan a eventos del mundo real e interoperan con sistemas tradicionales.
+
+Los oráculos de cadenas cruzadas pueden leer y escribir información entre diferentes cadenas de bloques. Los oráculos entre cadenas permiten la interoperabilidad para mover datos y activos entre cadenas de bloques, como usar datos en una cadena de bloques para desencadenar una acción en otra o unir activos entre cadenas para que puedan usarse fuera de la cadena de bloques nativa en la que fueron emitidos.
+
+Los contratos inteligentes híbridos se diferencian de los contratos inteligentes tradicionales en que funcionan con dos redes descentralizadas: una es Blockchain y la otra es Decentralized Oracle Network (DON).
+
+###### PROTOCOLO CHAINLINK
+El protocolo Chainlink CCIP es una capa de abstracción que facilita la interoperabilidad entre diferentes cadenas de bloques. Esto permite a los desarrolladores crear aplicaciones que pueden acceder a datos y activos de diferentes cadenas de bloques. 
+
+Establece estándares comunes para el intercambio de información entre cadenas de bloqueS que garantizan que las cadenas puedan comunicarse de manera efectiva y comprender los datos compartidos, facilitando la integración y colaboración. Además, permite la transferencia de datos en tiempo real entre diferentes cadenas de bloques. Esto es especialmente importante en aplicaciones que requieren información actualizada y precisa. Garantiza que los datos utilizados en el contrato sean siempre los más actualizados. CCIP permite la ejecución de contratos inteligentes en múltiples cadenas de bloques ampliando las posibilidades de los contratos.

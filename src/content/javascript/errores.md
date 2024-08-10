@@ -24,3 +24,10 @@ useEffect(() => fn());
 
 El valor de fn, que es una promesa, se convierte en el valor de retorno de la función de flecha en el hook useEffect. Debido a que una promesa no es una función React produce el error poruur espera un que se retorne una función de limpieza.
 
+
+##### INVALID HOOK CALL
+Generalmente ocurre cuando se llama por error a un hook fuera del alcance de un componente funcional. Los hooks, como useState o useEffect, están diseñados para usarse dentro de componentes funcionales para gestionar el estado y los efectos secundarios, respectivamente. Los hooks dependen del orden de llamada del componente para mantener su estado interno y garantizar una ejecución adecuada.
+
+- Colocación incorrecta: Los ganchos deben llamarse directamente dentro del cuerpo de un componente de función, no dentro de funciones anidadas, controladores de eventos o bucles. Si se llama a un hook en un lugar incorrecto, React generará este error.
+    
+- Ganchos condicionales: Los hooks deben llamarse incondicionalmente en cada renderizado. La representación condicional de hooks puede provocar un comportamiento impredecible y provocar el error. Para mantener un estado consistente se los hooks deben ser llamados en el mismo orden en cada rendrizado.

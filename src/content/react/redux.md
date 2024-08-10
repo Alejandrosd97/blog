@@ -69,5 +69,7 @@ Primero se debe envolver el componente App en con el componente <Provider>, que 
 
 En otro archivo store.js se crea el estado inicial. La función createSlice es una función proporcionada por Redux Toolkit que permite definir un slice de estado de Redux en un solo lugar. Un slice es una porción específica del estado de la aplicación que incluye su propio reducer y las acciones asociadas. La función createSlice se utiliza para generar automáticamente un reducer y las acciones relacionadas. Redux Toolkit crea automáticamente los action creators basados en los reducers definidos en createSlice. Los action types son manejados de manera transparente por Redux Toolkit. Esto evita errores tipográficos y garantiza una coherencia constante.
 
+Paara cambiar el estado desde un componente se usa el hook useDispatch. La funci´on dispatch recibe como argumento la acción que se debe llevar a cabo.
+
 ###### SLICES 
 Un slice en Redux Toolkit es una combinación de un reducer y acciones relacionadas en una entidad única. Cada slice representa una porción específica del estado global de la aplicación. Los slices se crean utilizando la función createSlice, que maneja la definición de acciones y el reductor correspondiente de manera más concisa.

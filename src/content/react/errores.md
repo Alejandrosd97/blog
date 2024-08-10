@@ -31,3 +31,6 @@ Generalmente ocurre cuando se llama por error a un hook fuera del alcance de un 
 - Colocación incorrecta: Los ganchos deben llamarse directamente dentro del cuerpo de un componente de función, no dentro de funciones anidadas, controladores de eventos o bucles. Si se llama a un hook en un lugar incorrecto, React generará este error.
     
 - Hooks condicionales: Los hooks deben llamarse incondicionalmente en cada renderizado. La representación condicional de hooks puede provocar un comportamiento impredecible y provocar el error. Para mantener un estado consistente se los hooks deben ser llamados en el mismo orden en cada rendrizado.
+
+##### COMPONENTE LINK
+Para que la aplicación se comporte como una Single Page Application se debe usar el componente <Link> de react-router-dom. Si se usa una etiqueta anchor se hará una nueva petición al servidor ocasionando una recarga de la página. Esta recarga hace que el estado de la aplicación no se mantenga y se reinicie cada vez que el usuario hace click en algún enlace

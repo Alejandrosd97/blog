@@ -73,3 +73,7 @@ Paara cambiar el estado desde un componente se usa el hook useDispatch. La funci
 
 ###### SLICES 
 Un slice en Redux Toolkit es una combinación de un reducer y acciones relacionadas en una entidad única. Cada slice representa una porción específica del estado global de la aplicación. Los slices se crean utilizando la función createSlice, que maneja la definición de acciones y el reductor correspondiente de manera más concisa.
+
+
+##### REDUX PERSIST
+Para evitar que el estado se pierda y se reinicie cada vez que se refresca la página se puede usar la biblioteca redux-persist

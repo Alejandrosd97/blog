@@ -21,6 +21,8 @@ A diferencia de otros lenguajes de programación, el símbolo . se usa para conc
 ##### VARIABLES
 Php es un lenguaje débilmente tipado por lo que no es necesario especificar el tipo de variable durante su declaración. Las variables llevan el signo $ delante del nombre tanto en la declaración como durante su uso. Las variables no pueden empezar con un número ni poner guiones. Se puede conocer el tipo de una variable mediante la función gettype(). Para imprimir el valor de una variable basta con usar comillas dobles y escribir el nombre de las variable, sin necesidad de template strings como es el caso de javascript. Com comillas simples esto no ocurre y es necesario usar la concatenación con el operador .
 
+Para comprobar si una variable está definida y no es null se usa la función isset(), con el conmbre de la variable como argumento.
+
 ##### CONSTANTES
 Las constantes en php se definen usando la función define(), que recibe como primer argumento el nombre de la constante y como segundo su valor. Para referirse a ellas no se usa el símbolo $, simplemente el nombre. Existen numerosas constantes predefinidas como PHP_VERSION, PHP_EXTENSION_DIR, __FILE__, etc...
 

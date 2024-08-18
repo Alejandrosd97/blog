@@ -44,7 +44,6 @@ Permite el tráfico entre una VPC y los recursos de aws sin pasar por internet. 
 - Interface endpoint: Es una Elastic Network Interface con una dirección IP privada que sirve como punto de entrada a tráfico dirigido a algún servicio de AWS.
 - Gateway endpoint: Parecido a una NAT gateway, es un endpoint que el usuario provee. Spoporta integración con S3 y DynamoDB.
 
-
 ##### DNS Y ELASTIC IP
 En la segunda IP del bloque CIDR podemos llegar al DNS , por ejemplo, 10.0.0.2
 

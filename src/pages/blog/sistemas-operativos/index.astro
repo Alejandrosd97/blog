@@ -10,6 +10,7 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
+import Prueba from "../../../components/prueba.astro";
 
 const tema ='sistemas-operativos'
 
@@ -102,20 +103,7 @@ const posts = (await getCollection(tema)).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/sistemas-operativos/${post.slug}/`}>
-									<img class="foto" width={720} height={260} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<Prueba tema="sistemas-operativos" foto="/os.jpg" posts={posts} />
 		</main>
 		<Footer />
 	</body>

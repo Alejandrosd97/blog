@@ -1,0 +1,38 @@
+---
+    const { foto, title, tema } = Astro.props
+---
+
+<style>
+    .carta {
+        transition:0.3s;
+    }
+    .carta h4{
+        margin-bottom:0px;
+        height:15%
+    }
+
+    .carta a h4:nth-child(3n){
+        background-color: #5AE4A7;
+    }
+
+    .carta:hover{
+        transform:translateY(-6px)
+    }
+
+    .carta a img{
+        height: 85%;
+        width : 100%;
+        object-fit:contain
+    }
+
+    .full-width{
+        object-fit: cover !important;
+    }
+</style>
+
+<li class="carta col-span-3 border border-2 border-black">
+    <a href={`/blog/${tema}`}>
+        <img class="foto" src={foto} alt="" />
+        <h4 class="title border-t-2 border-black p-2 mb-0 bg-yellow-300"class="title">{title}</h4>
+    </a>
+</li>

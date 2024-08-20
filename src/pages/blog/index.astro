@@ -3,48 +3,14 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import Card from '../../components/Card.astro';
 
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul li {
-				transition:0.3s;
-			}
-			li a h4{
-				margin-bottom:0px;
-                height:15%
-			}
-
-            li a h4:nth-child(3n){
-                background-color: #5AE4A7;
-            }
-
-			ul li:hover{
-				transform:translateY(-6px)
-			}
-
-			/* ul li{
-				display: flex;
-				flex-direction: column;
-			} */
-
-			li a img{
-				height: 85%;
-                width : 100%;
-                object-fit:contain
-			}
-
-            .full-width{
-                object-fit: cover !important;
-            }
-
-
-
-		</style>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />		
 	</head>
 	<body>
 		<Header />
@@ -52,79 +18,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 			<section>
                 <p class="mt-8 mb-6 w-3/5">Cada artículo está diseñado para ser claro, práctico y accesible, ya sea que estés comenzando tu viaje en el código o buscando profundizar en temas específicos. Aquí comparto todo lo que he aprendido a lo largo de mi experiencia autodidacta, con el objetivo de ayudarte a superar desafíos y a construir tus propias soluciones tecnológicas. ¡Explora, aprende y sigue creciendo con cada contenido!</p>
 				<ul class="grid grid-cols-12 gap-6">
-					<li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/aws-architect`}>
-                            <img class="foto" src="/aws-architect.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-green-300">AWS Architect</h4>
-                        </a>
-                    </li>
-
-					<li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/web`}>
-                            <img class="foto" src="/web.png" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-yellow-300" class="title">Web</h4>
-                        </a>
-                    </li>
-					<li class="col-span-3  border border-2 border-black">
-                        <a href={`/blog/programacion-c`}>
-                            <img class="foto" src="/aws-architect.png" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-purple-300" class="title">Programación en C</h4>
-                        </a>
-                    </li>
-					<li class="col-span-3  border border-2 border-black">
-                        <a href={`/blog/javascript`}>
-                            <img class="foto" src="/cloud.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-green-300" class="title">Javascript</h4>
-                        </a>
-                    </li>
-					<li class="col-span-3  border border-2 border-black">
-                        <a href={`/blog/desarrollo-web`}>
-                            <img class="foto" src="/web.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-yellow-300" class="title">Desarrollo web</h4>
-
-                        </a>
-                    </li>
-					
-                    <li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/aws-developer`}>
-                            <img class="foto" src="/aws-developer.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-purple-300" class="title">AWS Developer</h4>
-            
-                        </a>
-                    </li>
-
-					<li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/react`}>
-                            <img class="foto full-width" src="/react.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-green-300" class="title">React</h4>
-            
-                        </a>
-                    </li>
-                    <li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/linux`}>
-                            <img class="foto" src="/blog-placeholder-3.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-yellow-300" class="title border-t-2 border-black p-2 mb-0 bg-purple-200" class="title">Linux</h4>
-                        </a>
-                    </li>
-					<li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/hardware`}>
-                            <img class="foto" src="/blog-placeholder-3.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-purple-300" class="title border-t-2 border-black p-2 mb-0 bg-purple-200" class="title">Hardware</h4>
-                        </a>
-                    </li>
-					<li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/sistemas-operativos`}>
-                            <img class="foto" src="/os.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-green-300" class="title">S. Operativos</h4>
-                        </a>
-                    </li>
-					<li class="col-span-3 border border-2 border-black">
-                        <a href={`/blog/algoritmos`}>
-                            <img class="foto" src="/algoritmo.jpg" alt="" />
-                            <h4 class="title border-t-2 border-black p-2 mb-0 bg-yellow-300"class="title">Algoritmos</h4>
-                        </a>
-                    </li>
-
+                    <Card title="Programación en C" foto="/c.jpg" tema="programacion-c"/>
+                    <Card title="Javascript" foto="/javascript.jpg" tema="javascript"/>
+                    <Card title="Desarrollo web" foto="/web.jpg" tema="web"/>
+                    <Card title="AWS architect" foto="/aws-architect.jpg" tema="aws-architect"/>
+                    <Card title="AWS developer" foto="/aws-developer.jpg" tema="aws-developer"/>
+                    <Card title="React" foto="/react2.jpg" tema="react"/>
+                    <Card title="Linux" foto="/linux.jpg" tema="linux"/>
+                    <Card title="Hardware" foto="/hardware.jpg" tema="hardware"/>
+                    <Card title="S. Operativos" foto="/os.jpg" tema="sistemas-operativos"/>
+                    <Card title="Algoritmos" foto="/algoritmos.jpg" tema="algoritmos"/>
 				</ul>
 			</section>
 		</main>

@@ -1,0 +1,56 @@
+
+
+---
+    const { foto, tema, posts } = Astro.props
+
+---
+
+<style>
+    .leccion:nth-child(3n + 1):hover{
+        background-color: rgb(233 213 255);
+    }
+    .leccion:nth-child(3n + 2):hover{
+        background-color: rgb(254 240 138);
+    }
+    .leccion:nth-child(3n):hover{
+        background-color: rgb(134 239 172);
+    }
+
+    li a h4{
+        margin:0
+    }
+
+    .leccion:hover a div img{
+        transform:translateX(10px);
+        transition:0.2s
+    }
+    
+    .leccion a div img{
+        transition:0.2s
+    }
+
+</style>
+
+
+<div>
+    <section class="w-5/6 m-auto grid gap-4 grid-cols-4">
+        <img class="col-span-2 sticky top-[0px]" src={foto} alt="">
+        <ul class="col-span-2">
+            {
+                posts.map((post) => (
+                    <li class="leccion p-2 border-b-2 border-black">
+                        <a href={`/blog/${tema}/${post.slug}/`}>
+                        <div class="flex gap-4">
+                            <h4 class="title">{post.data.title}</h4>
+                            <img class="w-[30px] object-cover" src='../../flecha-derecha.svg' alt=""/>
+                        </div>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque earum libero dolor eligendi aspernatur architecto, provident, distinctio exercitationem doloribus debitis unde ullam vitae non eaque voluptate. Minima repellat qui dicta!</p>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+
+
+</div>

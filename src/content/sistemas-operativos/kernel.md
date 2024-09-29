@@ -1,0 +1,18 @@
+---
+title: 'Kernel'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jul 08 2022'
+heroImage: '/algoritmo.svg'
+---
+
+El sistema operativo constituye también un proceso dentro de la RAM, este proceso se conoce como proceso del sistema, mientras que el resto se denominan procesos de aplicaciones. No obstante, en la mayoría de implementaciones actuales no se mantiene el sistema operativo completo en la RAM, se mantiene una parte de manera permanente y el resto solo se carga cuando se necesita. El kernel es la parte que se mantiene en la RAM siempre, ya que contiene las funciones imprescindibles para que el sistema funcione correctamente. 
+
+Las llamadas al sistema son funciones funciones pertenecientes al código del sistema operativo que pueden ser invocadas por los programas. Comúnmente usan una instrucción especial del CPU que causa que el procesador transfiera el control a un código privilegiado (generalmente es el kernel). Cuando una llamada al sistema es invocada, la ejecución del programa que la invoca es interrumpida y sus datos son guardados, normalmente en su PCB, para poder continuar ejecutándose luego. El procesador entonces comienza a ejecutar las instrucciones para realizar la tarea requerida. Cuando esta finaliza, se retorna al proceso original, y continúa su ejecución. 
+
+Es necesario realizar una llamada al sistema cuando un proceso quiere acceder a información que se encuentra fuera de su PCB. Existen dos modos en los que los programas pueden ser ejecutados, user mode y kernel mode (o modo privilegiado). El modo se especifica en el mode bit, que indica el modo de ejecución actual. Este bit de modo se almacena en un registro llamado registro de palabra de estado del programa (PSW). Su valor es de 0 para el modo de kernel y 1 para el modo de usuario.
+
+Cuando el CPU ejecuta un proceso en modo de kernel, tiene acceso a cualquier dispositivo del hardware, y por lo tanto cualquier PCB
+
+Cuando una aplicación de usuario solicita un servicio del sistema operativo a través de una llamada al sistema, entonces el sistema necesita cambiar del modo de usuario al modo de kernel. Cuando la llamada al sistema termina, el sistema vuelve a cambiar del modo kernel al modo usuario.
+
+No se debe confundir el cambio de modo con el cambio de contexto. El cambio de contexto hace referencia al cambio de proceso que se está ejecutando en el procesador que ocurre en aquellos algoritmos de scheduling que son preemptive. El cambio de contexto es llevado a cabo por el short term scheduler, programa pertenciente al kernel, por lo que para llevar a cabo este cambio de contexto es necesario un cambio de modo al modo de kernel. Una vez realizado el cambio de dontexto se realiza nuevamente un cambio de modo, para que el proceso que entra en el CPU se ejecute en este modo usuario. En el proceso, los valores de los registros que estaban en uso por el por el proceso anterior así como el PC se almacenan en la RAM para que al reanudarse por donde estaba antes del cambio del cambio de contexto, cuando este proceso vuelva al CPU. Un cambio de contexto es un cambio entre dos procesos que se ejecutan en modo usuario, pero para llevar a cabo ese cambio, se necesita ejecutar código del kernel por lo que también involucra dos cambios de modo durante el proceso,  primero amodo de kernel y luego de vuelta a modo de usuario. Cambio de contexto se lleva a cabo entre dos procesos de usuario mientras que el cambio de modo se cambia de un proceso de usuario a un proceso o de kernel o viceversa.

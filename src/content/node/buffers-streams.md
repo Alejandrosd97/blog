@@ -11,7 +11,7 @@ Los buffers son un espacio de almacenamiento temporal para un pedazo de informac
 
 Los streams se utilizan principalmente para enviar datos desde una fuente a una ubicación en un orden particular. Son una forma de manejar el intercambio de información entre aplicaciones, introducida en el sistema operativo Unix, que ha resultado útil para pasar datos a una aplicación en una secuencia sin tener que esperar por el contenido completo, lo que puede llevar mucho tiempo.
 
-Se crea un Stream de lectura usando el módulo fs. Los streams tienen escuchar el evento ‘data’, que se dispara cada vez que el stream recibe un pedazo de información, llamado chunk. en node, los chunks tienen un tamaño de 64kb por defecto. Para poder leer el texto como tal se debe especificar el tipo de codificación, en este caso utf8. La diferencia entre usar streams o usar fs.readFile y fs.writeFile, es que con los streams no es necesario esperar a que toda la información se cargue en la memoria.
+Se crea un Stream de lectura usando el módulo fs. Los streams tienen escuchar el evento ‘data’, que se dispara cada vez que el stream recibe un pedazo de información, llamado chunk. en node, los chunks tienen un tamaño de 16kb por defecto. Para poder leer el texto como tal se debe especificar el tipo de codificación, en este caso utf8. La diferencia entre usar streams o usar fs.readFile y fs.writeFile, es que con los streams no es necesario esperar a que toda la información se cargue en la memoria.
 
 Leer un stream y luego transmitirlo es bastante común, por eso Node trae incorporado la función pipe, que cumple ese propósito. No es necesario escuchar eventos data no escribir en el stream de manera manual. El método pipe() solo se puede usar en streams de lectura.
 

@@ -23,8 +23,7 @@ res.writeHead(200, {'Content-Type' : 'text/html'})
 
 El método res.end() espera como argumento un string o un buffer, por lo que para enviar un json como respuesta es necesario serializarlo con el método JSON.stringify().
 
-En el ejemplo siguiente, el cuerpo de la respuesta es un stream de lectura, por lo que es necesario capturar el evento ‘data’, para ver lo que se va transmitiendo y el evento ‘end’ , que se ejecuta cuando la respuesta termine. Además también es necesario encadenar el método end() a http.request(), para que no de el error ‘socket hang up’. Por norma general, al usar el módulo http, la respuesta es un stream de escritura, sobre el cual se puede usar el método write.
-
+En el ejemplo siguiente, el cuerpo de la respuesta es un stream de lectura, por lo que es necesario capturar el evento ‘data’, para ver lo que se va transmitiendo y el evento ‘end’ , que se ejecuta cuando la respuesta termine. Además también es necesario encadenar el método end() a http.request(), para que no de el error ‘socket hang up’. Por norma general, al usar el módulo http, la respuesta es un stream de escritura, sobre el cual se puede usar el método write. Por ello es mecesario llamar al método end().
 ```
 
 const http = require('http')

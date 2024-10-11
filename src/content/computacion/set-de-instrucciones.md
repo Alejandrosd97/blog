@@ -82,3 +82,30 @@ Lo primero que se hace es guardar el valor de la PC en una ubicación conocida p
 fue encontrado y continuar la secuencia de ejecución. Las ubicaciones donde se puede almacenar la PC (es decir, la dirección de retorno de la subrutina) son un registro, al comienzo de la subrutina o en el stack, sinedo éste último el más habitual. Luego, se carga la dirección expresada por el operando de instrucción en el PC para transferir el control a la subrutina.
 
 La instrucción return de la subrutina se utiliza para devolver el control al punto de ejecución desde donde se realizó la llamada. Para ello recupera el valor del PC del lugar donde se almacena la instrucción de llamada a la subrutina. Tiene que ser la última instrucción de una subrutina y no tiene ningún operando explícito.
+
+
+##### ADDRESSING MODES
+Son las diferentes formas de expresar un operando en una instrucción y el procedimiento asociado que permite obtener la dirección donde se almacenan los datos y, como consecuencia, los datos
+
+###### INMEDIATE ADDRESSING MODE
+Usando el modo de direccionamiento inmediato, el operando expresa el valor
+de los datos que quiere utilizar; es decir, los datos están dentro de la instrucción y tiene un valor fijo.
+
+Se suele utilizar en operaciones aritméticas o lógicas, transferencias para inicializar un registro y, en general, para definir y utilizar constantes.
+El valor del dato suele representarse en complemento a dos y cuando se transfiere a un registro o a una posición de memoria hace la extensión de signo replicando el bit de signo hacia la izquierda, llenando el operando de dirección.
+
+No se requiere acceso a memoria adicional para obtener los datos, y esto acelera la ejecución de la instrucción. Las principales desventajas son que el valor de los datos es constante y que el rango de valores que se pueden representar está limitado por el tamaño de este operando, que no suele ser muy grande.
+
+En instrucciones de salto incondicionales, el operando puede expresar la dirección a la que quiere saltar; en este caso, esta dirección es el dato, ya que la función de
+esta instrucción es para cargar este valor en el PC y no necesariamente para acceder a la memoria para obtenerlo. Por eso se considera un modo de direccionamiento inmediato, aunque el operando exprese una dirección, como en el modo de direccionamiento directo de memoria.
+
+###### MODO DE DIRECCIONAMIENTO DIRECTO
+Usando el modo de direccionamiento directo, el operando indica dónde se pueden encontrar los datos. Si se refiere a un registro, los datos se almacenarán en este registro y se denomina modo de direccionamiento directo de registro. Si se refiere a una posición de memoria, los datos se almacenarán en esta dirección de memoria (es decir, dirección efectiva) y se denomina modo de direccionamiento directo de memoria.
+
+El tamaño del operando, en el caso del direccionamiento directo de registros, dependerá del número de registros que tenga la máquina, que suele ser relativamente reducido y, por tanto, necesita apenas unos pocos bits. En el caso del direccionamiento directo a memoria,
+Dependerá del tamaño de la memoria. En las máquinas modernas, el operando tiene que ser muy grande para poder direccionar toda la memoria, y este es uno de los principales problemas de este modo de direccionamiento.
+
+###### MODO DE DIRECCIONAMIENTO INDIRECTO
+Usando el modo de direccionamiento indirecto, el operando indica dónde Se almacena la dirección de memoria (es decir, la dirección efectiva) que contiene los datos que se necesitan. Si se refiere a un registro, la dirección de memoria (dirección efectiva) que contiene los datos estará en este registro y se conoce como modo de direccionamiento indirecto de registro. Si se refiere a una dirección de memoria, la dirección de memoria (es decir, dirección efectiva) donde se encuentran los datos se almacenará en esta posición de memoria y lo llamamos modo de direccionamiento de memoria indirecto.
+
+Uno de los problemas del modo de direccionamiento de memoria directo es que se requieren direcciones muy grandes para poder acceder a toda la memoria. Este no es el caso con el modo de direccionamiento indirecto. La dirección entera se puede guardar en un registro o en la memoria utilizando las posiciones necesarias. 

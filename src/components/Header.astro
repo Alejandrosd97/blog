@@ -5,7 +5,7 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+	<a class="text-white bg-black mt-2 text-2xl main-title" href="/">{SITE_TITLE}</a>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
@@ -35,13 +35,9 @@ import { SITE_TITLE } from '../consts';
 </header>
 <style>
 	header {
-		margin: 0;
-		padding: 0 1em;
+		margin:auto;
+		width: 90%;
 		background: white;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
 	}
 
 	h2 a,
@@ -55,10 +51,20 @@ import { SITE_TITLE } from '../consts';
 		border-bottom: 2px solid black
 	}
 	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
+		padding: 0.8em 0.5em;
 		text-decoration: none;
+		
+	}
+
+	.main-title{
+		border-top: 2px solid black;
+		border-left: 2px solid black;
+		border-right: 2px solid black;
+	}
+
+	.main-title:hover{
+		background-color: white;
+		color:black
 	}
 	/* nav a.active {
 		text-decoration: none;

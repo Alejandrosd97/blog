@@ -43,12 +43,11 @@ body {
 	line-height: 1.7;
 }
 main {
-	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 0.5em 1em 2em 1em;
+	width: 90%;
+	padding-top: 0.8em;
 }
 h1,
-h2,
 h3,
 h4,
 h5,

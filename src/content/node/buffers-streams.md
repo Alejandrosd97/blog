@@ -7,36 +7,22 @@ heroImage: '/algoritmo.svg'
 
 
 ##### STREAMS Y BUFFERS
-Los buffers son un espacio de almacenamiento temporal para un pedazo de información que se transfiere de un lugar a otro. Se llena el buffer con una parte de la información y se transfiere. En vez de esperar a que toda la información se copie en memoria, se va pasando al buffer hasta que éste está lleno, momento en que se transifere su contenido y empieza a llenarse de nuevo con mas data
+Los buffers son un espacio de almacenamiento temporal para un pedazo de información que se transfiere de un lugar a otro. Se llena el buffer con una parte de la información y se transfiere. En vez de esperar a que toda la información se copie en memoria, se va pasando al buffer hasta que éste está lleno, momento en que se transifere su contenido y empieza a llenarse de nuevo con mas data.
 
-Los streams se utilizan principalmente para enviar datos desde una fuente a una ubicación en un orden particular. Son una forma de manejar el intercambio de información entre aplicaciones, introducida en el sistema operativo Unix, que ha resultado útil para pasar datos a una aplicación en una secuencia sin tener que esperar por el contenido completo, lo que puede llevar mucho tiempo.
+Son una especie de contenedor en memoria. Son similares a los arrays en la manera en que también tienen elementos, empezando por el índice 0. Son subclases de la clase Uint8Array, introducidos en ES6. En el momento en que se crea el buffer, todos los bits tendrán el valor de 0. Cada elemento de un buffer ocupa exactamente 1 byte, y no se puede cambiar en node, además el tamaño total del buffer no se puede modificar una vez asignado. Si, por ejemplo, un buffer consta de 32 bits y se intenta escribir 36, node automáticamente descartará los cuatro últimos. Son muy útiles para mover información de manera rápida.
 
-Se crea un Stream de lectura usando el módulo fs. Los streams tienen escuchar el evento ‘data’, que se dispara cada vez que el stream recibe un pedazo de información, llamado chunk. en node, los chunks tienen un tamaño de 16kb por defecto. Para poder leer el texto como tal se debe especificar el tipo de codificación, en este caso utf8. La diferencia entre usar streams o usar fs.readFile y fs.writeFile, es que con los streams no es necesario esperar a que toda la información se cargue en la memoria.
+Para escribir números como negativos o decimales, el objeto buffer ofrece métodos que empiezan por write, como writeInt(-56, 2). El segundo argumento es la posición dentro del buffer. Se puede convertir el valor del buffer a un string con el método toString() para poder leerlo más fácilmente.
 
-Leer un stream y luego transmitirlo es bastante común, por eso Node trae incorporado la función pipe, que cumple ese propósito. No es necesario escuchar eventos data no escribir en el stream de manera manual. El método pipe() solo se puede usar en streams de lectura.
+Otro forma de crear el buffer es con el método Buffer.from([]), el array contiene la información a incluir en el buffer. No es necesario especificar el tamaño, ya que se asigna automáticamente. En vez de un array o a se puede pasar un string e indicar como segundo parámetro el tipo de codificacion, por ejemplo utf8 o hex. El encoding por defecto es utf8, por lo que en este caso puede ser omitido.
 
-Se puede usar pipe en un servidor para enviar la información como un stream usando pipe, pero en este caso se le pasa la información al objeto res. Para enviar texto plano se debe especificar en los headers como ‘Content-Type’ : ‘text/plain’ y  para enviar html, como ‘text/html. Para enviar un objeto como json el tipo es ‘application/json’.
+Se puede acceder a la propiedad length del buffer, que devuelve la cantidad de bytes que ocupa. La manera más rápida de asignar un valor al buffer es el método allocUnsafe(), la diferencia es que no se preocupa de llenar el espacio con ceros. Si ya había algo escrito, pues esa información se queda tal cual, cosa que podría ser problemática si un hacker pudiera acceder al buffer. La otra manera es el segundo parámetro de la función alloc(), que por defecto es 0.
 
-´´´
-res.writeHead(200, {'Content-Type' : 'text/html'})
-´´´
+Los metodos concat() y from() utilizan allocUnsafe() por detrás, pero rellenan el espacio lo antes posible con la información deseada, por lo que sí son seguros a pesar de usar allocUnsafe().
 
-El método res.end() espera como argumento un string o un buffer, por lo que para enviar un json como respuesta es necesario serializarlo con el método JSON.stringify().
+Cuando se inicia Node, se asigna una espacio de de 8kib manera automática, para que esté listo para usar si se necesita, de manera que el proceso es más rápido. Pero este espacio solo se puede usar mediante allocUnsafe(), no con alloc().
 
-En el ejemplo siguiente, el cuerpo de la respuesta es un stream de lectura, por lo que es necesario capturar el evento ‘data’, para ver lo que se va transmitiendo y el evento ‘end’ , que se ejecuta cuando la respuesta termine. Además también es necesario encadenar el método end() a http.request(), para que no de el error ‘socket hang up’. Por norma general, al usar el módulo http, la respuesta es un stream de escritura, sobre el cual se puede usar el método write. Por ello es mecesario llamar al método end().
-```
+La función fs.readFile() abre el archivo y devuelve un buffer con su contenido. 
 
-const http = require('http')
-const https = require('https')
 
-http.createServer((req, res)=>{
-https.request('https://www.google.com', (res)=>{
-res.on('data', (chunk) => {console.log(chunk)})
-res.on('end', ()=> console.log('res terminada'))
-}).end()
 
-res.end('respuesta enviada al cliente')
 
-}).listen(3000, ()=>console.log('funcionando en puerto 3000'))
-
-```

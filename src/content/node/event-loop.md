@@ -5,12 +5,6 @@ pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-3.jpg'
 ---
 
-
-
-
-
-
-
 ##### ¿ES NODE SINGLE-THREADED?
 Node ejecuta el event loop principal en un solo hilo. Sin embargo, eso no significa que todo su procesamiento se realice en ese único hilo. Las tareas asíncronas en Node se ejecutan en otros subprocesos internos. Cuando se completan, el código del callback, o del error, se devuelve al hilo único principal. Sin embargo, a veces es deseable crear otro proceso para ejecutar código. El módulo child_process crea nuevos procesos secundarios del proceso principal de Node y es posible ejecutar comandos de shell con estos procesos secundarios.
 

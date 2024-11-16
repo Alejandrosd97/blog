@@ -16,6 +16,13 @@ No obstante, cuando la aplicación empieza a crecer este arquitectura empieza a 
 
 La arquitectura monolítica es óptima para aplicaciones pequeñas debido a su rápido desarrollo, la simplicidad de las pruebas y depuración y el coste. Sin embargo, cuando el sistema crece puede convertirse en un obstáculo para los negocios y debería evolucionar hacia otra forma.
 
+##### MODELO MVC
+El modelo representa el manejo de datos de la aplicación. Maneja la manipulación, recuperación y almacenamiento de datos. Por ejemplo, en una aplicación de administrador de tareas, el modelo definiría la estructura de una tarea y manejaría la lógica para almacenar y recuperar tareas de la base de datos. El modelo incluiría la estructura de datos de una tarea, como el nombre de la tarea, las fechas de inicio y finalización y el estado.
+
+La vista es la interfaz de usuario de la aplicación. Muestra los datos proporcionados por el modelo en un formato fácil de usar. Por ejemplo, en la aplicación del administrador de tareas, la vista mostraría una lista de tareas y proporcionaría formularios para agregar o actualizar tareas.
+
+El controlador actúa como intermediario entre el modelo y la vista. Procesa las solicitudes entrantes, invoca el modelo para realizar las operaciones necesarias y luego determina la vista adecuada para representar. Por ejemplo, cuando un usuario solicita ver las tareas completadas, el controlador se comunicará con el modelo para recuperar las tareas completadas y luego pasará estos datos a la vista para su visualización.
+
 
 ##### MICROSERVICIOS
 Los microservicios son un enfoque arquitectónico para el desarrollo de software basado en la creación de una aplicación como una colección de pequeños servicios. Cada servicio tiene su propia función única y bien definida, se ejecuta en su propio proceso y se comunica a través de APIs HTTP o mensajería. Cada microservicio se puede implementar, actualizar, escalar y reiniciar independientemente de todos los demás. Por lo general, están orquestadas por un sistema automatizado, lo que permite tener actualizaciones frecuentes de aplicaciones sin afectar a los usuarios finales. Esta arquitectura ha ganado mucha popularidad últimamente, ya que se trata de la tecnología perfecta para aprovechar el modelo computación en la nube.

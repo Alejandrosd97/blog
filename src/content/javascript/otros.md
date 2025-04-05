@@ -50,10 +50,9 @@ Para convertir un objeto en formato json string se utiliza el método JSON.strin
 Un problema de dependencia circular se da cuando dos módulos se importan el uno al otro
 
 
-
-
-
-
-
 ##### VALOR vs RFERENCIA
 Para comparar si dos objetos diferentes tienen las mismas propiedades se puede usar la función JSON.stringify() sobre los objetos y comparar los strings.
+
+
+##### Element.getBoundingClientRect()
+Devuelve un objeto DOMRect que proporciona información sobre el tamaño de un elemento y su posición relativa a la ventana gráfica. El valor devuelto es un objeto DOMRect que es el rectángulo más pequeño que contiene el elemento completo, incluido su padding y ancho de borde. Las propiedades izquierda, superior, derecha, inferior, x, y, ancho y alto describen la posición y el tamaño del rectángulo general en píxeles. Las propiedades distintas del ancho y el alto son relativas a la parte superior izquierda de la ventana gráfica.

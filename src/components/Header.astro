@@ -5,7 +5,7 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-	<a class="text-white bg-black mt-2 text-2xl main-title" href="/">{SITE_TITLE}</a>
+	<a class="text-white bg-gray-950 hover:text-gray-950 hover:bg-white mt-2 text-2xl main-title" href="/">{SITE_TITLE}</a>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
@@ -62,14 +62,6 @@ import { SITE_TITLE } from '../consts';
 		border-right: 2px solid black;
 	}
 
-	.main-title:hover{
-		background-color: white;
-		color:black
-	}
-	/* nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	} */
 	.social-links,
 	.social-links a {
 		display: flex;

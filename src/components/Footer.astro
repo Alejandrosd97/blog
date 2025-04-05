@@ -2,9 +2,9 @@
 const today = new Date();
 ---
 
-<footer>
+<footer class="bg-gray-950 text-white px-12 py-24 m-auto">
 	&copy; {today.getFullYear()} Alejandro Santamaría Donet. All rights reserved.
-	<div class="social-links">
+	<div class="flex gap-6 justify-center mt-6">
 		<a href="https://twitter.com/astrodotbuild" target="_blank">
 			<span class="sr-only">Follow Astro on Twitter</span>
 			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter"
@@ -25,27 +25,3 @@ const today = new Date();
 		</a>
 	</div>
 </footer>
-<style>
-	footer {
-		border-top: 2px solid black;
-		background-color: black;
-		color:white;
-		margin: auto;
-		padding: 2em 1em 2em 1em;
-		text-align: center;
-		z-index:10
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-	}
-
-	.social-links a:hover{
-		color: rgb(var(--gray));
-	}
-</style>

@@ -1,5 +1,5 @@
 ---
-title: 'Migración y transferencia a AWS'
+title: 'Migración a AWS'
 description: 'Explicación Serverless computing'
 pubDate: 'Jul 01 2023'
 heroImage: '/blog-placeholder-1.jpg'

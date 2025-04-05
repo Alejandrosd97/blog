@@ -3,13 +3,17 @@ title: 'Event loop'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-3.jpg'
+id : 3
 ---
 
 ##### ¿ES NODE SINGLE-THREADED?
+
+Javascript es single-threaded y su mayor parte es bloqueante, es decir, hasta que no se termina la ejecución de una sentencia del código no pasa a la siguiente, de manera que si la primera no se resuelve, como podría ser un bucle while infinito, las instrucciones posteriores no se ejecutarán nunca.
+
 Node ejecuta el event loop principal en un solo hilo. Sin embargo, eso no significa que todo su procesamiento se realice en ese único hilo. Las tareas asíncronas en Node se ejecutan en otros subprocesos internos. Cuando se completan, el código del callback, o del error, se devuelve al hilo único principal. Sin embargo, a veces es deseable crear otro proceso para ejecutar código. El módulo child_process crea nuevos procesos secundarios del proceso principal de Node y es posible ejecutar comandos de shell con estos procesos secundarios.
 
 ##### MOTOR V8
-Node está escrito en C++ porque utiliza el motor v8 de Google que también utiliza C++. El motor puede ser incorporado en cualquier aplicación que esté escrita en C++, en este caso Node. Otro componente importante de Node es libuv, también escrito en C++ y que le da a Node acceso a utilidades del sistema operativo como el sistema de archivos.
+Node está escrito en C++ porque utiliza el motor V8 de Google que también utiliza C++. El motor puede ser incorporado en cualquier aplicación que esté escrita en C++, en este caso Node. Otro componente importante de Node es Libuv, también escrito en C++ y que le da a Node acceso a utilidades del sistema operativo como el sistema de archivos.
 
 En el código fuente de Node, la carpeta lib contiene todas las definiciones de funciones y módulos que se pueden requerir en un proyecto. La carpeta src, por su parte continene la implementación en C++. Node toma los argumentos de una función y los pasa a la versión de C++ de esa función. Esto se hace mediante process.binding(), que es lo que conecta javascript con C++. Luego el motor v8 convierte los valores de javascript a C++, por ejemplo, enteros, booleanos o strings.
 
@@ -17,7 +21,9 @@ En el código fuente de Node, la carpeta lib contiene todas las definiciones de 
 ##### EVENT LOOP
 El event loop es el núcleo de un programa de Node, y cada programa tiene un solo event loop. Cada vez que se ejecuta el event loop se conoce como un tick. Se puede ver el event loop de manera parecida a un bucle while, que se ejecuta cuando se cumple una determinada condición, cuando ésta no se cumple, se termina el programa y se vuelve a la terminal.
 
-La primera condición que se comprueba es si aún queda por ejecutar alguna función de setInterval(), setTimeout() o setInmediate(), la segunda es si queda pendiente alguna tarea de sistema operativo, por ejemplo un servidor HTTP escuchando en algún puerto. La tercera es si hay alguna operación de larga duración que todavía se está ejecutando, por ejemplo una llamada a una función dentro del módulo fs para leer un archivo del disco duro. Dentro del bucle, lo primero que se ejecuta son los callback de los timers (solo setTimeout() y setInterval()). Luego se ejecutan el resto de operaciones pendientes y los callbacks. Una vez hecho esto, se pausa la ejecución hasta que una tarea pendiente se completa o se cumple el tiempo de un timer. Luego se ejecutan los setInmediate() pendientes. El quinto y último paso es manejar los eventos ‘close’, por ejemplo en un stream, para ejecutar funciones de limpieza. Todo esto ocurre en cada tick.
+La primera condición que se comprueba es si aún queda por ejecutar alguna función de setInterval(), setTimeout() o setInmediate(), la segunda es si queda pendiente alguna tarea de sistema operativo, por ejemplo un servidor HTTP escuchando en algún puerto. La tercera es si hay alguna operación de larga duración que todavía se está ejecutando, por ejemplo, una llamada a una función dentro del módulo fs para leer un archivo del disco duro. Dentro del bucle, lo primero que se ejecuta son los callback de los timers (solo setTimeout() y setInterval()). Luego se ejecutan el resto de operaciones pendientes y los callbacks. Una vez hecho esto, se pausa la ejecución hasta que una tarea pendiente se completa o se cumple el tiempo de un timer. Luego se ejecutan los setInmediate() pendientes. El quinto y último paso es manejar los eventos ‘close’, por ejemplo en un stream, para ejecutar funciones de limpieza. Todo esto ocurre en cada tick.
+
+Cuando se ejecuta un archivo de javascript, se crea una función global que se envía al stack, las funciones presentes en el código del archivo se van enviando al stack en orden descendente, una vez completada la función, se elimina del stack y se coloca en el stack la siguiente, se ejecuta ahora esta y así sucesivamente hasta que se ejecuta todo el código, momento en el que se elimina la función global del stack. Cuando se utiliza un callback, para evitar bloquear la ejecución del programa durante el tiempo que toma la función, la función de callback se pasa a una librería llamada libuv, de manera que para el stack la función que llama a ese callback se considera como ejecutada, se elimina del stack y pasa a la siguiente, mientras que libuv se encarga de ejecutar la función de callback, devlviéndola al call stack una vez completada. Libuv trabaja mediante el algoritmo FIFO entre las tareas que ya estén completadas
 
 
 ##### THREADPOOL

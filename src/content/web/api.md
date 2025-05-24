@@ -1,7 +1,7 @@
 ---
 title: 'APIS'
 id: 2
-description: 'Explicación Serverless computing'
+description: ''
 pubDate: 'Jul 01 2023'
 heroImage: '/blog-placeholder-1.jpg'
 ---

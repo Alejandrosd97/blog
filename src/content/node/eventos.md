@@ -3,9 +3,10 @@ title: 'Eventos'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-3.jpg'
+id : 8
 ---
 
-En el backend, Node ofrece la posibilidad de crear un sistema similar al de los eventos en el navegador. Los emisores de eventos son objetos en Node que activan un evento enviando un mensaje para indicar que se completó una acción. En este contexto, los eventos se componen de un string de identificación y cualquier dato que deba pasarse a los oyentes.
+En el backend, Node ofrece la posibilidad de crear un sistema similar al de los eventos en el navegador. Los emisores de eventos son objetos en Node que activan un evento enviando un mensaje para indicar que se completó una acción. En este contexto, los eventos se componen de un string de identificación y cualquier información que deba pasarse a los oyentes.
 
 Para ello se utiliza el módulo events. El objeto que se usa para manejar los eventos es una instancia de la clase EventEmitter y sus métodos mas importantes son emit(), para emitir un evento y on() para ejecutar un callback cuando un evento determinado ha ocurrido. Se le pueden pasar argumentos a la función emit(), que luego se recogerán como argumentos en el callback y podrán ser usados en su interior, incluso si este no tiene parámetros. La función emit() por defecto devuelve true si hay suscriptores al evento y false si no los hay.
 
